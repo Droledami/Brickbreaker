@@ -6,7 +6,15 @@ public class BalleScript : MonoBehaviour
 {
     public Rigidbody2D rigidbody2D;
     public Vector2 direction;
-    // Start is called before the first frame update
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.name == "Brick")
+        {
+            Debug.Log("On a touché la brique");
+        }
+    }
+
     void Start()
     {
         
