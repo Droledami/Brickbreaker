@@ -7,6 +7,7 @@ public class BalleScript : MonoBehaviour
     public Rigidbody2D rigidbody2D;
     public Vector2 direction;
     bool isMoving;
+    public int speed;
     // Start is called before the first frame update
 
     void Start()
@@ -19,7 +20,7 @@ public class BalleScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) && !isMoving)
         {
-            rigidbody2D.velocity = direction;
+            rigidbody2D.velocity = direction * speed;
             isMoving = true;
         }
     }
@@ -33,7 +34,7 @@ public class BalleScript : MonoBehaviour
 
         if (isMoving && collision.collider.name != "Barre")
         {
-            direction = -direction;
+            direction = -direction * speed;
             rigidbody2D.velocity = direction;
         }
         else if (isMoving && collision.collider.name == "Barre")
@@ -41,9 +42,9 @@ public class BalleScript : MonoBehaviour
             Vector2 positionBarre = new Vector2();
             positionBarre = collision.collider.transform.position;
             if (rigidbody2D.transform.position.x > positionBarre.x)
-                direction.x = rigidbody2D.transform.position.x - positionBarre.x + 4.5f;
+                direction.x = (rigidbody2D.transform.position.x - positionBarre.x) * speed;
             if (rigidbody2D.transform.position.x < positionBarre.x)
-                direction.x = rigidbody2D.transform.position.x - positionBarre.x - 4.5f;
+                direction.x = (rigidbody2D.transform.position.x - positionBarre.x) * speed;
             rigidbody2D.velocity = direction;
         }
     }

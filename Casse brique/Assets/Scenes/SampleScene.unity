@@ -644,6 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 850a7b13fd33a354594f034b10324a7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Brick: {fileID: 0}
 --- !u!1 &1311847324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,4 +1481,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 2091684542}
-  direction: {x: 0, y: 5}
+  direction: {x: 0, y: 1}
+  speed: 5
