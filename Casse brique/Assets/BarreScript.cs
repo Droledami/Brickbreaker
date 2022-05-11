@@ -7,6 +7,7 @@ public class BarreScript : MonoBehaviour
     public float speed;
     public float MurGauche;
     public float MurDroit;
+    public GameManager GameManager; 
     public Rigidbody2D Rigibody;
 
     void OnCollisionEnter2D(Collision2D collisionInfo)
@@ -19,7 +20,7 @@ public class BarreScript : MonoBehaviour
 
     void Start()
     {
-        
+        GameManager = FindObjectOfType<GameManager>();
     }
 
     
