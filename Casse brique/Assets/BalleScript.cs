@@ -8,7 +8,7 @@ public class BalleScript : MonoBehaviour
     public Vector2 direction;
     bool isMoving;
     // Start is called before the first frame update
-	
+
     void Start()
     {
         isMoving = false;
@@ -36,12 +36,14 @@ public class BalleScript : MonoBehaviour
             direction = -direction;
             rigidbody2D.velocity = direction;
         }
-        else if(isMoving && collision.collider.name == "Barre")
+        else if (isMoving && collision.collider.name == "Barre")
         {
             Vector2 positionBarre = new Vector2();
             positionBarre = collision.collider.transform.position;
-            if(rigidbody2D.transform.position.x > positionBarre.x)
-            direction.x = rigidbody2D.transform.position.x - positionBarre.x + 4;
+            if (rigidbody2D.transform.position.x > positionBarre.x)
+                direction.x = rigidbody2D.transform.position.x - positionBarre.x + 4.5f;
+            if (rigidbody2D.transform.position.x < positionBarre.x)
+                direction.x = rigidbody2D.transform.position.x - positionBarre.x - 4.5f;
             rigidbody2D.velocity = direction;
         }
     }
