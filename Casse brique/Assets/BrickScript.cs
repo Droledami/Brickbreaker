@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class BrickScript : MonoBehaviour
 {
+    public GameObject Brick;
     // Start is called before the first frame update
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Renderer render = gameObject.GetComponent<Renderer>();
         if (collision.collider.name == "Balle")
         {
             Debug.Log("La balle m'a touché UwU");
-            render.enabled = false;
+            Brick = GameObject.Find("Brick");
+            Brick.SetActive(false);
         }
     }
     void Start()
