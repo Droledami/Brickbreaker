@@ -8,15 +8,6 @@ public class BalleScript : MonoBehaviour
     public Vector2 direction;
     bool isMoving;
     // Start is called before the first frame update
-
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.name == "Brick")
-        {
-            Debug.Log("On a touché la brique");
-        }
-    }
 	
     void Start()
     {
@@ -35,6 +26,11 @@ public class BalleScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.collider.name == "Brick")
+        {
+            Debug.Log("On a touché la brique");
+        }
+
         if (isMoving && collision.collider.name != "Barre")
         {
             direction = -direction;
