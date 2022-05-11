@@ -7,7 +7,16 @@ public class BarreScript : MonoBehaviour
     public float speed;
     public float MurGauche;
     public float MurDroit;
-    
+    public Rigidbody2D Rigibody;
+
+    void OnCollisionEnter2D(Collision2D collisionInfo)
+    {
+        if (collisionInfo.collider.tag == "Bord")
+        {
+            Debug.Log("On a touché le mur");
+        }
+    }
+
     void Start()
     {
         
@@ -19,6 +28,8 @@ public class BarreScript : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
 
         transform.Translate(Vector2.right * horizontal * Time.deltaTime * speed);
+
+
 
         if (transform.position.x < MurGauche)
         {
