@@ -4,23 +4,38 @@ using UnityEngine;
 
 public class BalleScript : MonoBehaviour
 {
-    public Rigidbody2D rigidbody2D;
-    public Vector2 direction;
+    Rigidbody2D rigidbody2D;
+    GameManager GameManager;
     bool isMoving;
+
     public int speed;
+    public Transform BarrePosition;
     // Start is called before the first frame update
 
     void Start()
     {
         isMoving = false;
+        rigidbody2D = GetComponent<Rigidbody2D>();
+        GameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isMoving)
+        {
+            Vector3 offsetFromBarre = new Vector3(0, 0.2f);
+            rigidbody2D.transform.position = BarrePosition.position + offsetFromBarre;
+        }
+        if(rigidbody2D.position.y < -5.1f)
+        {
+            Debug.Log("Balle perdue!");
+            gameObject.SetActive(false);
+            GameManager.EnleverVie();
+        }
         if (Input.GetKeyDown(KeyCode.UpArrow) && !isMoving)
         {
-            rigidbody2D.velocity = direction * speed;
+            rigidbody2D.AddForce(Vector2.up * speed);
             isMoving = true;
         }
     }
@@ -34,18 +49,11 @@ public class BalleScript : MonoBehaviour
 
         if (isMoving && collision.collider.name != "Barre")
         {
-            direction = -direction * speed;
-            rigidbody2D.velocity = direction;
+            
         }
         else if (isMoving && collision.collider.name == "Barre")
         {
-            Vector2 positionBarre = new Vector2();
-            positionBarre = collision.collider.transform.position;
-            if (rigidbody2D.transform.position.x > positionBarre.x)
-                direction.x = (rigidbody2D.transform.position.x - positionBarre.x) * speed;
-            if (rigidbody2D.transform.position.x < positionBarre.x)
-                direction.x = (rigidbody2D.transform.position.x - positionBarre.x) * speed;
-            rigidbody2D.velocity = direction;
+            
         }
     }
 }
