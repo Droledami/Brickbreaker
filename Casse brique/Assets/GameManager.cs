@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject Barre;
-    // Start is called before the first frame update
-    void Start()
+    public int vies = 3;
+    public void EndGame()
     {
-        Barre = GetComponent<GameObject>();
+        Debug.Log("Le jeu est fini");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void EnleverVie()
     {
-        
+        vies--;
     }
+    
 }

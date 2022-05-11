@@ -7,10 +7,11 @@ public class BarreScript : MonoBehaviour
     public float speed;
     public float MurGauche;
     public float MurDroit;
+    public GameManager GameManager;
     
     void Start()
     {
-        
+        GameManager = FindObjectOfType<GameManager>();
     }
 
     
