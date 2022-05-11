@@ -304,6 +304,9 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+>>>>>>> 5f0d72371f97ccd667dfa0334bf693aa68dc2a79
+=======
 >>>>>>> 5f0d72371f97ccd667dfa0334bf693aa68dc2a79
 --- !u!1 &519420028
 GameObject:
@@ -390,7 +393,11 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1185432631
+=======
+--- !u!1 &1660260457
+>>>>>>> 5f0d72371f97ccd667dfa0334bf693aa68dc2a79
 =======
 --- !u!1 &1660260457
 >>>>>>> 5f0d72371f97ccd667dfa0334bf693aa68dc2a79
@@ -402,6 +409,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
 <<<<<<< HEAD
+<<<<<<< HEAD
   - component: {fileID: 1185432632}
   - component: {fileID: 1185432634}
   - component: {fileID: 1185432633}
@@ -409,6 +417,8 @@ GameObject:
   m_Name: Vies
   m_TagString: Untagged
 =======
+=======
+>>>>>>> 5f0d72371f97ccd667dfa0334bf693aa68dc2a79
   - component: {fileID: 1660260460}
   - component: {fileID: 1660260459}
   - component: {fileID: 1660260458}
@@ -416,14 +426,22 @@ GameObject:
   m_Layer: 0
   m_Name: Bord Gauche
   m_TagString: Bord
+<<<<<<< HEAD
+>>>>>>> 5f0d72371f97ccd667dfa0334bf693aa68dc2a79
+=======
 >>>>>>> 5f0d72371f97ccd667dfa0334bf693aa68dc2a79
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!224 &1185432632
 RectTransform:
+=======
+--- !u!61 &1660260458
+BoxCollider2D:
+>>>>>>> 5f0d72371f97ccd667dfa0334bf693aa68dc2a79
 =======
 --- !u!61 &1660260458
 BoxCollider2D:
@@ -432,6 +450,7 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_GameObject: {fileID: 1185432631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -450,6 +469,8 @@ BoxCollider2D:
 --- !u!114 &1185432633
 MonoBehaviour:
 =======
+=======
+>>>>>>> 5f0d72371f97ccd667dfa0334bf693aa68dc2a79
   m_GameObject: {fileID: 1660260457}
   m_Enabled: 1
   m_Density: 1
@@ -540,11 +561,15 @@ Transform:
 --- !u!50 &1660260461
 Rigidbody2D:
   serializedVersion: 4
+<<<<<<< HEAD
+>>>>>>> 5f0d72371f97ccd667dfa0334bf693aa68dc2a79
+=======
 >>>>>>> 5f0d72371f97ccd667dfa0334bf693aa68dc2a79
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_GameObject: {fileID: 1185432631}
   m_Enabled: 1
@@ -773,6 +798,8 @@ CanvasRenderer:
   m_GameObject: {fileID: 1361558785}
   m_CullTransparentMesh: 1
 =======
+=======
+>>>>>>> 5f0d72371f97ccd667dfa0334bf693aa68dc2a79
   m_GameObject: {fileID: 1660260457}
   m_BodyType: 0
   m_Simulated: 1
@@ -787,6 +814,9 @@ CanvasRenderer:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+<<<<<<< HEAD
+>>>>>>> 5f0d72371f97ccd667dfa0334bf693aa68dc2a79
+=======
 >>>>>>> 5f0d72371f97ccd667dfa0334bf693aa68dc2a79
 --- !u!1 &1804681790
 GameObject:
@@ -933,9 +963,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
 <<<<<<< HEAD
+<<<<<<< HEAD
   MurGauche: -7
   MurDroit: 7
   GameManager: {fileID: 0}
+=======
+  MurGauche: -7.803751
+  MurDroit: 4.033752
+  Rigibody: {fileID: 0}
+>>>>>>> 5f0d72371f97ccd667dfa0334bf693aa68dc2a79
 =======
   MurGauche: -7.803751
   MurDroit: 4.033752
@@ -1035,8 +1071,14 @@ BoxCollider2D:
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1927385017
 GameObject:
+=======
+--- !u!50 &1851699985
+Rigidbody2D:
+  serializedVersion: 4
+>>>>>>> 5f0d72371f97ccd667dfa0334bf693aa68dc2a79
 =======
 --- !u!50 &1851699985
 Rigidbody2D:
@@ -1046,6 +1088,7 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
   serializedVersion: 6
   m_Component:
@@ -1144,6 +1187,8 @@ RectTransform:
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 =======
+=======
+>>>>>>> 5f0d72371f97ccd667dfa0334bf693aa68dc2a79
   m_GameObject: {fileID: 1851699980}
   m_BodyType: 0
   m_Simulated: 1
@@ -1158,6 +1203,9 @@ RectTransform:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
+<<<<<<< HEAD
+>>>>>>> 5f0d72371f97ccd667dfa0334bf693aa68dc2a79
+=======
 >>>>>>> 5f0d72371f97ccd667dfa0334bf693aa68dc2a79
 --- !u!1 &2091684538
 GameObject:
