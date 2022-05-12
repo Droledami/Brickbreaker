@@ -8,6 +8,8 @@ public class BalleScript : MonoBehaviour
     GameManager GameManager;
     Vector3 offsetFromBarre = new Vector3(0, 0.2f);
     bool isMoving;
+    int lifeTime;
+    float second = 0f;
 
     public int speed;
     public Transform BarrePosition;
@@ -27,13 +29,24 @@ public class BalleScript : MonoBehaviour
         {
             rigidbody2D.transform.position = BarrePosition.position + offsetFromBarre;
         }
-        if(rigidbody2D.position.y < -5.1f)//La balle passe sous la coordonnée 5.1 en Y, alors la balle est hors jeu.
+        else
+        {
+            second += Time.deltaTime;
+            if (second >= 1)
+            {
+                lifeTime += 1;
+                second--;
+            }
+        }
+        if (rigidbody2D.position.y < -5.1f)//La balle passe sous la coordonnée 5.1 en Y, alors la balle est hors jeu.
         {
             Debug.Log("Balle perdue!");
             GameManager.EnleverVie();
             rigidbody2D.transform.position = BarrePosition.position + offsetFromBarre;
             isMoving = false;
             rigidbody2D.velocity = Vector2.zero;
+            lifeTime = 0;
+            second = 0f;
         }
         if (Input.GetKeyDown(KeyCode.UpArrow) && !isMoving)//La balle est lancée dès qu'on appuie sur la touche haut.
         {
@@ -51,11 +64,11 @@ public class BalleScript : MonoBehaviour
 
         if (isMoving && collision.collider.name != "Barre")
         {
-            
+
         }
         else if (isMoving && collision.collider.name == "Barre")
         {
-            
+
         }
     }
 }
