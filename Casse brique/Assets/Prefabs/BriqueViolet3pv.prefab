@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectable: {fileID: 0}
-  typeDeBrick: 1
+  typeDeBrick: 2
   Hit: {fileID: 21300000, guid: 20fe1ba236b602548a48c00965861db8, type: 3}
   Hit2: {fileID: 21300000, guid: 63df77db301f30145b3e70e196de1db2, type: 3}
 --- !u!61 &5167526935688100798

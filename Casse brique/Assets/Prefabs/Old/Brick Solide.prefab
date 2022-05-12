@@ -126,3 +126,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectable: {fileID: 0}
   typeDeBrick: 2
+  Hit: {fileID: 0}
+  Hit2: {fileID: 0}
