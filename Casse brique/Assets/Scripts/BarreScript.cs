@@ -31,8 +31,6 @@ public class BarreScript : MonoBehaviour
 
         transform.Translate(Vector2.right * horizontal * Time.deltaTime * speed);
 
-
-
         if (transform.position.x < MurGauche)
         {
             transform.position = new Vector2(MurGauche, transform.position.y);

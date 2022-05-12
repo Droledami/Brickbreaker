@@ -36,9 +36,11 @@ public class BalleScript : MonoBehaviour
             {
                 lifeTime += 1;
                 second--;
+                GameManager.UpdateMultiplicateurLifeTime(lifeTime);
+                GameManager.AjouterScore(1);
             }
         }
-        if (rigidbody2D.position.y < -5.1f)//La balle passe sous la coordonnée 5.1 en Y, alors la balle est hors jeu.
+        if (rigidbody2D.position.y < -5.1f)//La balle passe sous la coordonnée 5.1 en Y, alors la balle est hors jeu. On reset les bonus et enleve une vie;
         {
             Debug.Log("Balle perdue!");
             GameManager.EnleverVie();
@@ -47,6 +49,7 @@ public class BalleScript : MonoBehaviour
             rigidbody2D.velocity = Vector2.zero;
             lifeTime = 0;
             second = 0f;
+            GameManager.UpdateMultiplicateurLifeTime(lifeTime);
         }
         if (Input.GetKeyDown(KeyCode.UpArrow) && !isMoving)//La balle est lancée dès qu'on appuie sur la touche haut.
         {
