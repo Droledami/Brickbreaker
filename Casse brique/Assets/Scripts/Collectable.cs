@@ -10,11 +10,13 @@ public class Collectable : MonoBehaviour
     }
 
     GameManager GameManager;
+    private bool hasBalleSup;
 
-    private Vector3 changementDeTailleVector;
     public float changementDeTaille;
     public TypeDeCollectable typeDeCollectable;
     public float speed = 0.1f;
+    public GameObject BalleBonus;
+
 
     void Update()
     {
@@ -26,18 +28,22 @@ public class Collectable : MonoBehaviour
     {
         if (collision.tag == "Barre")
         {
+            Vector3 changementDeTailleVector;
             BarreScript barre = collision.GetComponent<BarreScript>();
             switch (this.typeDeCollectable)
             {
                 case TypeDeCollectable.Elargissement:
-                    Vector3 changementDeTailleVector = new Vector3(changementDeTaille, 0, 0);
+                    changementDeTailleVector = new Vector3(changementDeTaille, 0, 0);
                     Debug.Log("Touché Bonus Elargissement!");
                     barre.transform.localScale += changementDeTailleVector;
                     barre.MurDroit -= changementDeTaille / 2;
                     barre.MurGauche += changementDeTaille / 2;
                     break;
                 case TypeDeCollectable.BalleSup:
-
+                    if (!hasBalleSup)
+                    {
+                        Instantiate(BalleBonus, collision.transform.position + new Vector3(0, 0.2f), Quaternion.identity);
+                    }
                     break;
                 case TypeDeCollectable.VieSup:
                     Debug.Log("Touché Bonus Vie Sup!");
@@ -55,7 +61,7 @@ public class Collectable : MonoBehaviour
                     barre.speed -= 1;
                     break;
             }
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }

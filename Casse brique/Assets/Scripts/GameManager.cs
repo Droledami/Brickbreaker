@@ -13,6 +13,19 @@ public class GameManager : MonoBehaviour
 
     private int multiplicateurLifeTime = 1;
     private float multiplicateurCombo = 1f;
+    private int ballesEnJeu;
+
+
+    public int BallesEnJeu
+    {
+        get { return ballesEnJeu; }
+        set
+        {
+            ballesEnJeu = value;
+            if (ballesEnJeu == 0)
+                EnleverVie();
+        }
+    }
     public void EndGame()
     {
         Debug.Log("Le jeu est fini");
@@ -30,24 +43,12 @@ public class GameManager : MonoBehaviour
         ViesText.text = $"Vies : {vies}";
     }
 
-    public void AjouterScore(int points)
+    public void AjouterScore(int points, int multiplicateurLifeTime, float multiplicateurCombo)
     {
         float pointsF = points;
         pointsF = pointsF * multiplicateurLifeTime * multiplicateurCombo;
         score += (int)pointsF;
         ScoreText.text = $"{score}";
-    }
-
-    public void UpdateMultiplicateurLifeTime(int lifeTime)
-    {
-        if (lifeTime >= 10)
-        {
-            multiplicateurLifeTime = lifeTime / 10;
-        }
-        else
-        {
-            multiplicateurLifeTime = 1;
-        }
     }
 
     private void Start()
