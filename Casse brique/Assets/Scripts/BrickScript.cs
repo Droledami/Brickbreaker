@@ -12,7 +12,8 @@ public class BrickScript : MonoBehaviour
     public Brick Brick;
     private SpriteRenderer renderer;
     private bool containsCollectable = false;
-
+    public Sprite Hit;
+    public Sprite Hit2;
     // Start is called before the first frame update
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -22,10 +23,12 @@ public class BrickScript : MonoBehaviour
             switch (this.Brick.pv)
             {
                 case 2:
-                    renderer.color = Color.magenta;
+                    //renderer.color = Color.magenta;
+                    gameObject.GetComponent<SpriteRenderer>().sprite = Hit; 
                     break;
                 case 1:
-                    renderer.color = Color.red;
+                    //renderer.color = Color.red;
+                    gameObject.GetComponent<SpriteRenderer>().sprite = Hit2;
                     break;
                 case 0:
                     GameManager.AjouterScore(this.Brick.points);
