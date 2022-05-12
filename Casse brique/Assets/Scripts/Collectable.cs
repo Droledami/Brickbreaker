@@ -37,7 +37,7 @@ public class Collectable : MonoBehaviour
                     barre.MurGauche += changementDeTaille / 2;
                     break;
                 case TypeDeCollectable.BalleSup:
-                    //A AJOUTER
+
                     break;
                 case TypeDeCollectable.VieSup:
                     Debug.Log("Touché Bonus Vie Sup!");
@@ -55,6 +55,7 @@ public class Collectable : MonoBehaviour
                     barre.speed -= 1;
                     break;
             }
+            gameObject.SetActive(false);
         }
     }
 }

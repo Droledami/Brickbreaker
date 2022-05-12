@@ -9,6 +9,8 @@ public class BarreScript : MonoBehaviour
     public float MurDroit;
     GameManager GameManager; 
     Rigidbody2D Rigidbody;
+    Collectable.TypeDeCollectable modificateurActif;
+    float tempsModificateur = 0f;
 
     void OnCollisionEnter2D(Collision2D collisionInfo)
     {
