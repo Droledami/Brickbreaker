@@ -128,6 +128,11 @@ public class BalleScript : MonoBehaviour
             UpdateMultiplicateurLifeTime(lifeTime);
             GameManager.AjouterScore(1, multiplicateurLifeTime, multiplicateurCombo);
         }
+        if (lifeTime < 1)
+        {
+            lifeTime = 1;
+            UpdateMultiplicateurLifeTime(lifeTime);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

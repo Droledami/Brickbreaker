@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     public void EnleverVie()
     {
         vies--;
-        ViesText.text = $"Vies : {vies}";
+        ViesText.text = $"Vies: {vies}";
         if (vies <=0)
         {
             vies = 0;
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     public void AjouterVie()
     {
         vies++;
-        ViesText.text = $"Vies : {vies}";
+        ViesText.text = $"Vies: {vies}";
     }
 
     public void AjouterScore(int points, int multiplicateurLifeTime, float multiplicateurCombo)
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        ViesText.text = $"Vies : {vies}";
+        ViesText.text = $"Vies: {vies}";
         ScoreText.text = $"{score}";
         NumberofBricks = GameObject.FindGameObjectsWithTag("Brick").Length;
     }
