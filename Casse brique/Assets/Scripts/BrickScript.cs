@@ -6,7 +6,7 @@ using UnityEditor;
 public class BrickScript : MonoBehaviour
 {
     private GameManager GameManager;
-    public enum TypeDeBrick { Normal, Solide, BonusElargissement, BonusVieSup, BonusBalleSup, MalusRetrecissement, MalusRalentissement }
+    public enum TypeDeBrick { Normal, Resistant, Solide, BonusOuMalus }
     public GameObject collectable;
     public TypeDeBrick typeDeBrick;
     public Brick Brick;
@@ -17,7 +17,8 @@ public class BrickScript : MonoBehaviour
     // Start is called before the first frame update
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.name == "Balle")
+        BalleScript balle = collision.gameObject.GetComponent<BalleScript>();
+        if (collision.collider.tag == "Balle")
         {
             this.Brick.pv--;
             switch (this.Brick.pv)
@@ -31,7 +32,7 @@ public class BrickScript : MonoBehaviour
                     gameObject.GetComponent<SpriteRenderer>().sprite = Hit2;
                     break;
                 case 0:
-                    GameManager.AjouterScore(this.Brick.points);
+                    GameManager.AjouterScore(this.Brick.points, balle.MultiplicateurLifeTime, 1);
                     if (containsCollectable)
                     {
                         Instantiate(collectable, gameObject.transform.position, Quaternion.identity);
@@ -52,12 +53,12 @@ public class BrickScript : MonoBehaviour
             case TypeDeBrick.Solide:
                 this.Brick = new BrickSolide();
                 break;
-            case TypeDeBrick.BonusVieSup:
-                this.Brick = new Brick();
-                containsCollectable = true;
+            case TypeDeBrick.Resistant:
+                this.Brick = new Brick(2,50);
                 break;
             default:
                 this.Brick = new Brick();
+                containsCollectable = true;
                 break;
         }
         this.renderer = gameObject.GetComponent<SpriteRenderer>();
