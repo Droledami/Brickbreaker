@@ -102,6 +102,7 @@ MonoBehaviour:
   typeDeCollectable: 1
   speed: 2
   BalleBonus: {fileID: 4766830344189418946, guid: 2876efb625089644fa57690733cc86e4, type: 3}
+  points: 200
 --- !u!61 &5294912757641762441
 BoxCollider2D:
   m_ObjectHideFlags: 0

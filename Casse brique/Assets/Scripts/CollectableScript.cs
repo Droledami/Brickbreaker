@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collectable : MonoBehaviour
+public class CollectableScript : MonoBehaviour
 {
     public enum TypeDeCollectable
     {
@@ -15,6 +15,7 @@ public class Collectable : MonoBehaviour
     public TypeDeCollectable typeDeCollectable;
     public float speed = 0.1f;
     public GameObject BalleBonus;
+    public int points;
 
 
     void Update()
@@ -27,6 +28,7 @@ public class Collectable : MonoBehaviour
     {
         if (collision.tag == "Barre")
         {
+            GameManager.AjouterScore(points, 1, 1);
             Vector3 changementDeTailleVector;
             BarreScript barre = collision.GetComponent<BarreScript>();
             switch (this.typeDeCollectable)

@@ -101,6 +101,8 @@ MonoBehaviour:
   changementDeTaille: 0.2
   typeDeCollectable: 2
   speed: 2
+  BalleBonus: {fileID: 0}
+  points: 200
 --- !u!61 &7655354279195628592
 BoxCollider2D:
   m_ObjectHideFlags: 0
