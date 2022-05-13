@@ -11,8 +11,9 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     public TextMeshProUGUI ViesText;
     public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI ComboText;
 
-    private float meilleurCombo = 1f;
+    private int meilleurCombo = 0;
     public int ballesEnJeu = 0;
 
     public bool gameover;
@@ -67,6 +68,7 @@ public class GameManager : MonoBehaviour
         if (combo > meilleurCombo)
         {
             meilleurCombo = combo;
+            ComboText.text = $"meilleur\ncombo: {combo}";
         }
     }
 

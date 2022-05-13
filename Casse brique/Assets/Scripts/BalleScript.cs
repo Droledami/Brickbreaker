@@ -13,7 +13,7 @@ public class BalleScript : MonoBehaviour
     Transform BarrePosition;
     int multiplicateurLifeTime;
     public float multiplicateurCombo = 1f;
-    public int combo;
+    public int combo=0;
 
     public int speed;
     public bool derniereBalle;
@@ -157,6 +157,7 @@ public class BalleScript : MonoBehaviour
     private void UpdateCombo()
     {
         combo++;
+        GameManager.UpdateMeilleurCombo(combo);
         multiplicateurCombo = ((float)combo + 10f) / 10f;
     }
 
