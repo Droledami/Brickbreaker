@@ -309,6 +309,7 @@ MonoBehaviour:
   ballesEnJeu: 0
   gameover: 0
   GameOverPanel: {fileID: 1207423162}
+  NumberofBricks: 0
 --- !u!1 &347412166
 GameObject:
   m_ObjectHideFlags: 0
@@ -2363,6 +2364,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BriqueBonusVie
       objectReference: {fileID: 0}
+    - target: {fileID: 568570895782058367, guid: ac342d6612b238345bae2b203a248e8e, type: 3}
+      propertyPath: m_TagString
+      value: Brick
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac342d6612b238345bae2b203a248e8e, type: 3}
 --- !u!1001 &1456878556767250659
@@ -2375,6 +2380,10 @@ PrefabInstance:
     - target: {fileID: 1456878557871524480, guid: 3bca7fdc661a5a0408652a65179447e3, type: 3}
       propertyPath: m_Name
       value: BriqueBonusElarg
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456878557871524480, guid: 3bca7fdc661a5a0408652a65179447e3, type: 3}
+      propertyPath: m_TagString
+      value: Brick
       objectReference: {fileID: 0}
     - target: {fileID: 1456878557871524484, guid: 3bca7fdc661a5a0408652a65179447e3, type: 3}
       propertyPath: m_RootOrder
@@ -2494,6 +2503,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "BriqueMalusR\xE9tr\xE9ci"
       objectReference: {fileID: 0}
+    - target: {fileID: 5028991140004209358, guid: 69c6b66d34382644eadb2278ad589969, type: 3}
+      propertyPath: m_TagString
+      value: Brick
+      objectReference: {fileID: 0}
     - target: {fileID: 5028991140004209362, guid: 69c6b66d34382644eadb2278ad589969, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -2595,6 +2608,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BriqueViolet3pv
       objectReference: {fileID: 0}
+    - target: {fileID: 5167526935688100799, guid: 51ca65fec93b9c64298ce0f7290089ae, type: 3}
+      propertyPath: m_TagString
+      value: Brick
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51ca65fec93b9c64298ce0f7290089ae, type: 3}
 --- !u!1001 &5197445279292439945
@@ -2607,6 +2624,10 @@ PrefabInstance:
     - target: {fileID: 5197445278745321941, guid: 1381faf64b2b0b641ac34cb179f34d1e, type: 3}
       propertyPath: m_Name
       value: BriqueBleu2pv
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197445278745321941, guid: 1381faf64b2b0b641ac34cb179f34d1e, type: 3}
+      propertyPath: m_TagString
+      value: Brick
       objectReference: {fileID: 0}
     - target: {fileID: 5197445278745321961, guid: 1381faf64b2b0b641ac34cb179f34d1e, type: 3}
       propertyPath: m_RootOrder
@@ -2709,6 +2730,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BriqueMalusSpeed
       objectReference: {fileID: 0}
+    - target: {fileID: 5870112917027751022, guid: 8d044d0cc5d0f3945bb0651a6c4d566d, type: 3}
+      propertyPath: m_TagString
+      value: Brick
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d044d0cc5d0f3945bb0651a6c4d566d, type: 3}
 --- !u!1001 &6933973129452733416
@@ -2721,6 +2746,10 @@ PrefabInstance:
     - target: {fileID: 4430754885302668696, guid: 70da498986e49db4383cf782518e16c0, type: 3}
       propertyPath: m_Name
       value: BriqueVerte
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430754885302668696, guid: 70da498986e49db4383cf782518e16c0, type: 3}
+      propertyPath: m_TagString
+      value: Brick
       objectReference: {fileID: 0}
     - target: {fileID: 8399089350665053320, guid: 70da498986e49db4383cf782518e16c0, type: 3}
       propertyPath: m_RootOrder
@@ -2778,6 +2807,10 @@ PrefabInstance:
     - target: {fileID: 9132973536195646284, guid: 46da4e0893dbfc84c87e457ec5c88b20, type: 3}
       propertyPath: m_Name
       value: BriqueBonusBalle
+      objectReference: {fileID: 0}
+    - target: {fileID: 9132973536195646284, guid: 46da4e0893dbfc84c87e457ec5c88b20, type: 3}
+      propertyPath: m_TagString
+      value: Brick
       objectReference: {fileID: 0}
     - target: {fileID: 9132973536195646320, guid: 46da4e0893dbfc84c87e457ec5c88b20, type: 3}
       propertyPath: m_RootOrder

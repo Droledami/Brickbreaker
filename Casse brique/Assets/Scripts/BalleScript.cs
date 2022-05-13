@@ -131,7 +131,8 @@ public class BalleScript : MonoBehaviour
     {
         if (collision.collider.tag == "Brick")
         {
-            Debug.Log("On a touch? une brique");
+            
+            Debug.Log("On a touché une brique");
         }
 
         if (isMoving && collision.collider.name != "Barre")
