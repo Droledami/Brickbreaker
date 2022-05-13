@@ -12,6 +12,8 @@ public class BalleScript : MonoBehaviour
     float second = 0f;
     Transform BarrePosition;
     int multiplicateurLifeTime;
+    public float multiplicateurCombo = 1f;
+    public int combo;
 
     public int speed;
     public bool derniereBalle;
@@ -49,7 +51,7 @@ public class BalleScript : MonoBehaviour
     void Update()
     {
         VerifierSiDerniereBalle();
-        if (!isMoving)//La balle suit la barre si elle n'est pas encore lanc?e.
+        if (!isMoving)//La balle suit la barre si elle n'est pas encore lancée.
         {
             rigidbody2D.transform.position = BarrePosition.position + offsetFromBarre;
         }
@@ -75,7 +77,7 @@ public class BalleScript : MonoBehaviour
 
     private void GererBalleHorsJeu()
     {
-        if (rigidbody2D.position.y < -5.1f)//La balle passe sous la coordonn?e 5.1 en Y, alors la balle est hors jeu. On reset les bonus et enleve une vie;
+        if (rigidbody2D.position.y < -5.1f)//La balle passe sous la coordonnée 5.1 en Y, alors la balle est hors jeu. On reset les bonus et enleve une vie;
         {
             if (GameManager.BallesEnJeu > 1)
             {
@@ -103,11 +105,12 @@ public class BalleScript : MonoBehaviour
         lifeTime = 0;
         second = 0f;
         UpdateMultiplicateurLifeTime(lifeTime);
+        ResetCombo();
     }
 
     private void LancerBalle()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && !isMoving)//La balle est lanc?e d?s qu'on appuie sur la touche haut.
+        if (Input.GetKeyDown(KeyCode.UpArrow) && !isMoving)//La balle est lancée dès qu'on appuie sur la touche haut.
         {
             rigidbody2D.AddForce(Vector2.up * speed);
             isMoving = true;
@@ -123,7 +126,7 @@ public class BalleScript : MonoBehaviour
             lifeTime += 1;
             second--;
             UpdateMultiplicateurLifeTime(lifeTime);
-            GameManager.AjouterScore(1, multiplicateurLifeTime, 1);
+            GameManager.AjouterScore(1, multiplicateurLifeTime, multiplicateurCombo);
         }
     }
 
@@ -131,17 +134,31 @@ public class BalleScript : MonoBehaviour
     {
         if (collision.collider.tag == "Brick")
         {
-            Debug.Log("On a touch? une brique");
+            Debug.Log("On a touché une brique");
+            UpdateCombo();
         }
 
         if (isMoving && collision.collider.name != "Barre")
         {
-
+            
         }
         else if (isMoving && collision.collider.name == "Barre")
         {
-
+            Debug.Log("La balle a touché la barre");
+            ResetCombo();
         }
+    }
+
+    private void UpdateCombo()
+    {
+        combo++;
+        multiplicateurCombo = ((float)combo + 10f) / 10f;
+    }
+
+    private void ResetCombo()
+    {
+        combo = 0;
+        multiplicateurCombo = 1f;
     }
 
     void UpdateMultiplicateurLifeTime(int lifeTime)

@@ -30,7 +30,7 @@ public class BrickScript : MonoBehaviour
                     renderer.sprite = Hit2;
                     break;
                 case 0:
-                    GameManager.AjouterScore(this.Brick.points, balle.MultiplicateurLifeTime, 1);
+                    GameManager.AjouterScore(this.Brick.points, balle.MultiplicateurLifeTime, balle.multiplicateurCombo);
                     if (containsCollectable)
                     {
                         Instantiate(collectable, gameObject.transform.position, Quaternion.identity);

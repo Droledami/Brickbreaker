@@ -12,8 +12,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI ViesText;
     public TextMeshProUGUI ScoreText;
 
-    private int multiplicateurLifeTime = 1;
-    private float multiplicateurCombo = 1f;
+    private float meilleurCombo = 1f;
     public int ballesEnJeu = 0;
 
     public bool gameover;
@@ -60,6 +59,14 @@ public class GameManager : MonoBehaviour
         pointsF = pointsF * multiplicateurLifeTime * multiplicateurCombo;
         score += (int)pointsF;
         ScoreText.text = $"{score}";
+    }
+
+    public void UpdateMeilleurCombo(int combo)
+    {
+        if (combo > meilleurCombo)
+        {
+            meilleurCombo = combo;
+        }
     }
 
     private void Start()
