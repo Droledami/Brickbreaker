@@ -14,6 +14,7 @@ public class BalleScript : MonoBehaviour
     int multiplicateurLifeTime;
 
     public int speed;
+    public bool derniereBalle;
     
     // Start is called before the first frame update
 
@@ -27,6 +28,10 @@ public class BalleScript : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         GameManager = FindObjectOfType<GameManager>();
         BarrePosition = GameObject.Find("Barre").GetComponent<Transform>();
+        if(GameManager.BallesEnJeu == 0)
+        {
+            derniereBalle = true;
+        }
     }
 
     // Update is called once per frame
@@ -51,10 +56,15 @@ public class BalleScript : MonoBehaviour
         {
             Debug.Log("Balle perdue!");
             GameManager.BallesEnJeu--;
-            if(GameManager.BallesEnJeu == 0)
+            if (!derniereBalle)
+            {
+                Destroy(gameObject);
+            }
+            else
             {
                 rigidbody2D.transform.position = BarrePosition.position + offsetFromBarre;
                 isMoving = false;
+                derniereBalle = true;
                 rigidbody2D.velocity = Vector2.zero;
                 lifeTime = 0;
                 second = 0f;

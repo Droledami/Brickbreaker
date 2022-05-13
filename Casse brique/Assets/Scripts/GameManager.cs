@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     private int multiplicateurLifeTime = 1;
     private float multiplicateurCombo = 1f;
-    private int ballesEnJeu;
+    public int ballesEnJeu = 0;
 
 
     public int BallesEnJeu
