@@ -10,7 +10,6 @@ public class Collectable : MonoBehaviour
     }
 
     GameManager GameManager;
-    private bool hasBalleSup;
 
     public float changementDeTaille;
     public TypeDeCollectable typeDeCollectable;
@@ -40,10 +39,7 @@ public class Collectable : MonoBehaviour
                     barre.MurGauche += changementDeTaille / 2;
                     break;
                 case TypeDeCollectable.BalleSup:
-                    if (!hasBalleSup)
-                    {
                         Instantiate(BalleBonus, collision.transform.position + new Vector3(0, 0.2f), Quaternion.identity);
-                    }
                     break;
                 case TypeDeCollectable.VieSup:
                     Debug.Log("Touché Bonus Vie Sup!");

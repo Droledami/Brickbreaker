@@ -24,12 +24,10 @@ public class BrickScript : MonoBehaviour
             switch (this.Brick.pv)
             {
                 case 2:
-                    //renderer.color = Color.magenta;
-                    gameObject.GetComponent<SpriteRenderer>().sprite = Hit; 
+                    renderer.sprite = Hit; 
                     break;
                 case 1:
-                    //renderer.color = Color.red;
-                    gameObject.GetComponent<SpriteRenderer>().sprite = Hit2;
+                    renderer.sprite = Hit2;
                     break;
                 case 0:
                     GameManager.AjouterScore(this.Brick.points, balle.MultiplicateurLifeTime, 1);

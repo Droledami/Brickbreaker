@@ -27,7 +27,9 @@ public class GameManager : MonoBehaviour
         {
             ballesEnJeu = value;
             if (ballesEnJeu == 0)
+            {
                 EnleverVie();
+            }
         }
     }
     public void EndGame()
