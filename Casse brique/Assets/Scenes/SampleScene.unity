@@ -309,6 +309,7 @@ MonoBehaviour:
   ballesEnJeu: 0
   gameover: 0
   GameOverPanel: {fileID: 1207423162}
+  NumberofBricks: 0
 --- !u!1 &347412166
 GameObject:
   m_ObjectHideFlags: 0

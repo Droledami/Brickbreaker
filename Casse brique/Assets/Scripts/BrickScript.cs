@@ -36,6 +36,7 @@ public class BrickScript : MonoBehaviour
                         Instantiate(collectable, gameObject.transform.position, Quaternion.identity);
                     }
                     gameObject.SetActive(false);
+                    GameManager.UpdtNumberofBrick();
                     break;
             }
         }

@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     public bool gameover;
     public GameObject GameOverPanel;
+    public int NumberofBricks;
 
 
     public int BallesEnJeu
@@ -73,6 +74,7 @@ public class GameManager : MonoBehaviour
     {
         ViesText.text = $"Vies : {vies}";
         ScoreText.text = $"{score}";
+        NumberofBricks = GameObject.FindGameObjectsWithTag("Brick").Length;
     }
 
     public void GameOver()
@@ -90,6 +92,15 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Vous avez quittez le jeu. :(");
+    }
+
+    public void UpdtNumberofBrick()
+    {
+        NumberofBricks--;
+        if (NumberofBricks <= 0)
+        {
+            GameOver(); //A remplacer par les levels
+        }
     }
 
 }
