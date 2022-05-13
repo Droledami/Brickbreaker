@@ -71,6 +71,10 @@ public class BalleScript : MonoBehaviour
                 UpdateMultiplicateurLifeTime(lifeTime);
             }
         }
+        if (GameManager.gameover)
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.UpArrow) && !isMoving)//La balle est lancée dès qu'on appuie sur la touche haut.
         {
             rigidbody2D.AddForce(Vector2.up * speed);

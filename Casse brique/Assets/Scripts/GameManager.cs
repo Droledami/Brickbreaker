@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class GameManager : MonoBehaviour
     private int multiplicateurLifeTime = 1;
     private float multiplicateurCombo = 1f;
     public int ballesEnJeu = 0;
+
+    public bool gameover;
+    public GameObject GameOverPanel;
 
 
     public int BallesEnJeu
@@ -35,6 +39,11 @@ public class GameManager : MonoBehaviour
     {
         vies--;
         ViesText.text = $"Vies : {vies}";
+        if (vies <=0)
+        {
+            vies = 0;
+            GameOver();
+        }
     }
 
     public void AjouterVie()
@@ -56,4 +65,22 @@ public class GameManager : MonoBehaviour
         ViesText.text = $"Vies : {vies}";
         ScoreText.text = $"{score}";
     }
+
+    public void GameOver()
+    {
+        gameover = true;
+        GameOverPanel.SetActive(true);
+    }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
+        Debug.Log("Vous avez quittez le jeu.");
+    }
+
 }
