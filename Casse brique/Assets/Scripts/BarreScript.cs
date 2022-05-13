@@ -7,7 +7,7 @@ public class BarreScript : MonoBehaviour
     public float speed;
     public float MurGauche;
     public float MurDroit;
-    GameManager GameManager; 
+    public GameManager GameManager; 
     Rigidbody2D Rigidbody;
     CollectableScript.TypeDeCollectable modificateurActif;
     float tempsModificateur = 0f;
@@ -29,6 +29,10 @@ public class BarreScript : MonoBehaviour
     
     void Update()
     {
+        if (GameManager.gameover)
+        {
+            return;
+        }
         float horizontal = Input.GetAxis("Horizontal");
 
         transform.Translate(Vector2.right * horizontal * Time.deltaTime * speed);
