@@ -1933,6 +1933,7 @@ MonoBehaviour:
   speed: 10
   MurGauche: -7.803751
   MurDroit: 4.033752
+  GameManager: {fileID: 119341073}
 --- !u!212 &1851699982
 SpriteRenderer:
   m_ObjectHideFlags: 0
