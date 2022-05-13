@@ -21,6 +21,19 @@ public class CollectableScript : MonoBehaviour
     void Update()
     {
         gameObject.transform.Translate(Vector3.down * Time.deltaTime * speed);
+        if (GameManager.gameover)
+        {
+            speed = 0;
+        }
+        if (gameObject.transform.position.y < -5.1f)//Si le collectable arrive sous cette coordonnée il doit être détruit.
+        {
+            Debug.Log("Collectable perdu!");
+                Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
         GameManager = FindObjectOfType<GameManager>();
     }
 

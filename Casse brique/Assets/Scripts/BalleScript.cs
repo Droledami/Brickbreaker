@@ -38,7 +38,7 @@ public class BalleScript : MonoBehaviour
         {
             derniereBalle = true;
         }
-        if (!derniereBalle)
+        if (!derniereBalle)//S'il y a déjà une balle en jeu, elle se lance automatiquement depuis la barre.
         {
             rigidbody2D.AddForce(Vector2.up * speed);
             isMoving = true;
@@ -50,17 +50,24 @@ public class BalleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        VerifierSiDerniereBalle();
-        if (!isMoving)//La balle suit la barre si elle n'est pas encore lancée.
+        if (GameManager.gameover)
         {
-            rigidbody2D.transform.position = BarrePosition.position + offsetFromBarre;
+            rigidbody2D.velocity = Vector2.zero;
         }
         else
         {
-            GestionTempsDeVieEtScore();
+            VerifierSiDerniereBalle();
+            if (!isMoving)//La balle suit la barre si elle n'est pas encore lancée.
+            {
+                rigidbody2D.transform.position = BarrePosition.position + offsetFromBarre;
+            }
+            else
+            {
+                GestionTempsDeVieEtScore();
+            }
+            GererBalleHorsJeu();
+            LancerBalle();
         }
-        GererBalleHorsJeu();
-        LancerBalle();
     }
 
     private void VerifierSiDerniereBalle()

@@ -6,14 +6,18 @@ using UnityEditor;
 public class BrickScript : MonoBehaviour
 {
     private GameManager GameManager;
+    private SpriteRenderer renderer;
+    private bool containsCollectable = false;
+
     public enum TypeDeBrick { Normal, Resistant, Solide, BonusOuMalus }
+
     public GameObject collectable;
     public TypeDeBrick typeDeBrick;
     public Brick Brick;
-    private SpriteRenderer renderer;
-    private bool containsCollectable = false;
     public Sprite Hit;
     public Sprite Hit2;
+
+    public Transform effetDestruction;
     // Start is called before the first frame update
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -29,14 +33,17 @@ public class BrickScript : MonoBehaviour
                 case 1:
                     renderer.sprite = Hit2;
                     break;
-                case 0:
+                case 0://On effectue un ajout de point, un spawn de bonus si la brique en contient un, on met à jour le nombre de briques restantes puis on détruit l'objet une fois que les pv sont à 0;
                     GameManager.AjouterScore(this.Brick.points, balle.MultiplicateurLifeTime, balle.multiplicateurCombo);
+                    Transform nouvelEffetDestruction = Instantiate(effetDestruction, gameObject.transform.position,Quaternion.identity);
+                    Destroy(nouvelEffetDestruction.gameObject, 3f);
                     if (containsCollectable)
                     {
                         Instantiate(collectable, gameObject.transform.position, Quaternion.identity);
                     }
                     gameObject.SetActive(false);
                     GameManager.UpdtNumberofBrick();
+                    Destroy(gameObject);
                     break;
             }
         }

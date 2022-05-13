@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1456878557871524487}
   m_Layer: 0
   m_Name: BriqueBonusElarg
-  m_TagString: Untagged
+  m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,3 +128,4 @@ MonoBehaviour:
   typeDeBrick: 3
   Hit: {fileID: 0}
   Hit2: {fileID: 0}
+  effetDestruction: {fileID: 5829167605112277726, guid: fa63e520c8b71fd45815e16739229493, type: 3}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6519255495152716769}
   m_Layer: 0
   m_Name: BriqueVerte
-  m_TagString: Untagged
+  m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,3 +126,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectable: {fileID: 0}
   typeDeBrick: 0
+  Hit: {fileID: 0}
+  Hit2: {fileID: 0}
+  effetDestruction: {fileID: 7794576723099515814, guid: 8a5bd8307769c48449f10fb2effaf99c, type: 3}

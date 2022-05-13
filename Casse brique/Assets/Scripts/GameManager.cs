@@ -68,7 +68,14 @@ public class GameManager : MonoBehaviour
         if (combo > meilleurCombo)
         {
             meilleurCombo = combo;
-            ComboText.text = $"meilleur\ncombo: {combo}";
+            if(meilleurCombo < 10)//Afin d'éviter un overflow au passage de la dizaine, si on passe à 10, l'espace devant les : sera omis.
+            {
+                ComboText.text = $"meilleur\ncombo: {combo}";
+            }
+            else
+            {
+                ComboText.text = $"meilleur\ncombo:{combo}";
+            }
         }
     }
 
@@ -77,6 +84,7 @@ public class GameManager : MonoBehaviour
         ViesText.text = $"Vies: {vies}";
         ScoreText.text = $"{score}";
         NumberofBricks = GameObject.FindGameObjectsWithTag("Brick").Length;
+        gameover = false;
     }
 
     public void GameOver()
