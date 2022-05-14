@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
-        Debug.Log("Vous avez quittez le jeu. :(");
+        Debug.Log("Vous avez quitté le jeu. :(");
     }
 
     public void UpdtNumberofBrick()
