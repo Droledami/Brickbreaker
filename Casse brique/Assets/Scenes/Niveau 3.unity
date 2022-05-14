@@ -435,10 +435,8 @@ MonoBehaviour:
   gameover: 0
   GameOverPanel: {fileID: 1207423162}
   NumberofBricks: 0
-  levels:
-  - {fileID: 0}
-  - {fileID: 1210185940926076347, guid: f2d0c3af1d869c4409566d8f50fae6e3, type: 3}
-  CurrentLvl: 0
+  HiScoreNiveauActif: 0
+  HiComboNiveauActif: 0
 --- !u!1001 &187020634
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -695,107 +693,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 568570895782058355, guid: ac342d6612b238345bae2b203a248e8e, type: 3}
   m_PrefabInstance: {fileID: 300712453}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &328579173 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4766830344189418946, guid: 2876efb625089644fa57690733cc86e4, type: 3}
-  m_PrefabInstance: {fileID: 4766830344380485496}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &328579174
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 328579173}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c53dec452c1e8f04f892271fb4cbf446, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.434
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1001 &330078937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2059,6 +1956,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5167526935688100795, guid: 51ca65fec93b9c64298ce0f7290089ae, type: 3}
   m_PrefabInstance: {fileID: 765247087}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &776787096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 776787098}
+  - component: {fileID: 776787097}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &776787097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776787096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e3f3b75e7728874f95bfa9e44e1e1e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sons:
+  - nom: bruit barre
+    Clip: {fileID: 8300000, guid: e6c3d8a591db5da4493699886a8c0cf1, type: 3}
+    volume: 0.324
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - nom: bruit bord
+    Clip: {fileID: 8300000, guid: c53dec452c1e8f04f892271fb4cbf446, type: 3}
+    volume: 0.324
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - nom: bruit brique
+    Clip: {fileID: 8300000, guid: d9c156a4ba065214cb6b460ce3453d80, type: 3}
+    volume: 0.324
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - nom: music
+    Clip: {fileID: 8300000, guid: 27ef5e6b95278524ea06d64c7be6a0e8, type: 3}
+    volume: 0.053
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+--- !u!4 &776787098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776787096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.0652412, y: 5.332037, z: -7.271421}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &781281463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5186,17 +5152,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4766830344189418949, guid: 2876efb625089644fa57690733cc86e4, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766830344189418950, guid: 2876efb625089644fa57690733cc86e4, type: 3}
-      propertyPath: m_Mass
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766830344189418951, guid: 2876efb625089644fa57690733cc86e4, type: 3}
-      propertyPath: son
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 328579174, guid: 2876efb625089644fa57690733cc86e4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2876efb625089644fa57690733cc86e4, type: 3}
