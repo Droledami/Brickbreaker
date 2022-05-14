@@ -20,7 +20,6 @@ public class BalleScript : MonoBehaviour
     public int combo=0;
     public int speed;
     public bool derniereBalle;
-    public AudioSource son;
 
     public bool IsMoving
     {
@@ -35,8 +34,6 @@ public class BalleScript : MonoBehaviour
     }
     void Start()
     {
-        son = GetComponent<AudioSource>();
-
         isMoving = false;
         rigidbody2D = GetComponent<Rigidbody2D>();
         GameManager = FindObjectOfType<GameManager>();
@@ -157,16 +154,17 @@ public class BalleScript : MonoBehaviour
     {
         if (collision.collider.tag == "Brick")
         {
-            son.Play();
+            FindObjectOfType<AudioManager>().Play("bruit brique");
             UpdateCombo();
         }
 
         if (isMoving && collision.collider.tag == "Bord")
         {
-            son.Play();
+            FindObjectOfType<AudioManager>().Play("bruit bord");
         }
         else if (isMoving && collision.collider.name == "Barre")
         {
+            FindObjectOfType<AudioManager>().Play("bruit barre");
             ResetCombo();
         }
     }
