@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Audio;
 
 public class BalleScript : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class BalleScript : MonoBehaviour
     public int combo=0;
     public int speed;
     public bool derniereBalle;
+    public AudioSource son;
+
     public bool IsMoving
     {
         get { return isMoving; }
@@ -32,6 +35,8 @@ public class BalleScript : MonoBehaviour
     }
     void Start()
     {
+        son = GetComponent<AudioSource>();
+
         isMoving = false;
         rigidbody2D = GetComponent<Rigidbody2D>();
         GameManager = FindObjectOfType<GameManager>();
@@ -154,12 +159,13 @@ public class BalleScript : MonoBehaviour
         if (collision.collider.tag == "Brick")
         {
             Debug.Log("On a touché une brique");
+            son.Play();
             UpdateCombo();
         }
 
-        if (isMoving && collision.collider.name != "Barre")
+        if (isMoving && collision.collider.tag == "Bord")
         {
-            
+            son.Play();
         }
         else if (isMoving && collision.collider.name == "Barre")
         {
