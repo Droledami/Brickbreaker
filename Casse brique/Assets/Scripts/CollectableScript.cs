@@ -28,7 +28,7 @@ public class CollectableScript : MonoBehaviour
         if (gameObject.transform.position.y < -5.1f)//Si le collectable arrive sous cette coordonnée il doit être détruit.
         {
             Debug.Log("Collectable perdu!");
-                Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -47,6 +47,7 @@ public class CollectableScript : MonoBehaviour
             switch (this.typeDeCollectable)
             {
                 case TypeDeCollectable.Elargissement:
+                    GameManager.AfficherPointsPopUp(collision.gameObject.transform.position, points);
                     changementDeTailleVector = new Vector3(changementDeTaille, 0, 0);
                     Debug.Log("Touché Bonus Elargissement!");
                     barre.transform.localScale += changementDeTailleVector;
@@ -54,9 +55,11 @@ public class CollectableScript : MonoBehaviour
                     barre.MurGauche += changementDeTaille / 2;
                     break;
                 case TypeDeCollectable.BalleSup:
-                        Instantiate(BalleBonus, collision.transform.position + new Vector3(0, 0.2f), Quaternion.identity);
+                    GameManager.AfficherPointsPopUp(collision.gameObject.transform.position, points);
+                    Instantiate(BalleBonus, collision.transform.position + new Vector3(0, 0.2f), Quaternion.identity);
                     break;
                 case TypeDeCollectable.VieSup:
+                    GameManager.AfficherPointsPopUp(collision.gameObject.transform.position, points);
                     Debug.Log("Touché Bonus Vie Sup!");
                     GameManager.AjouterVie();
                     break;

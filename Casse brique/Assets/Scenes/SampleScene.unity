@@ -190,13 +190,13 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4286381958
-  m_fontColor: {r: 0.5249446, g: 1, b: 0.48490566, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
+    rgba: 4288282528
+  m_fontColor: {r: 0.6287916, g: 1, b: 0.5981132, a: 1}
+  m_enableVertexGradient: 1
+  m_colorMode: 2
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 0.037735812, g: 0.4528302, b: 0, a: 1}
+    topRight: {r: 0.037735812, g: 0.4528302, b: 0, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
@@ -1100,13 +1100,13 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4286381958
-  m_fontColor: {r: 0.5254902, g: 1, b: 0.4862745, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
+    rgba: 4288282528
+  m_fontColor: {r: 0.627451, g: 1, b: 0.6, a: 1}
+  m_enableVertexGradient: 1
+  m_colorMode: 2
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 0.039215688, g: 0.4509804, b: 0, a: 1}
+    topRight: {r: 0.039215688, g: 0.4509804, b: 0, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
@@ -1433,13 +1433,13 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4286381958
-  m_fontColor: {r: 0.5254902, g: 1, b: 0.48627454, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
+    rgba: 4288282528
+  m_fontColor: {r: 0.627451, g: 1, b: 0.6, a: 1}
+  m_enableVertexGradient: 1
+  m_colorMode: 2
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 0.039215688, g: 0.4509804, b: 0, a: 1}
+    topRight: {r: 0.039215688, g: 0.4509804, b: 0, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
