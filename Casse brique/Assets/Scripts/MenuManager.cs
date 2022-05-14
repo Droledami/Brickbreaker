@@ -7,6 +7,6 @@ public class MenuManager : MonoBehaviour
 {
     public void LancerNiveau()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Niveau 1");
     }
 }

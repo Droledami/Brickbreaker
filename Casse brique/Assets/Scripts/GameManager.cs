@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int vies = DonneesGenerales.Vies;
+    public int vies;
     public int score = 0;
     public TextMeshProUGUI ViesText;
     public TextMeshProUGUI ScoreText;
@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     public bool gameover;
     public GameObject GameOverPanel;
     public int NumberofBricks;
+
+    public int HiScoreNiveauActif;
+    public int HiComboNiveauActif;
 
 
     public int BallesEnJeu
@@ -56,7 +59,7 @@ public class GameManager : MonoBehaviour
     {
         vies++;
         ViesText.text = $"Vies: {vies}";
-        
+
     }
 
     public void AjouterScore(int points, int multiplicateurLifeTime, float multiplicateurCombo)
@@ -85,6 +88,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        HiScoreNiveauActif = DonneesGenerales.ScoreNiveau[DonneesGenerales.NiveauActif - 1];
+        HiComboNiveauActif = DonneesGenerales.MeilleurComboNiveau[DonneesGenerales.NiveauActif - 1];
+        vies = DonneesGenerales.Vies;
         ViesText.text = $"Vies: {vies}";
         ScoreText.text = $"{score}";
         NumberofBricks = GameObject.FindGameObjectsWithTag("Brick").Length;
@@ -101,11 +107,22 @@ public class GameManager : MonoBehaviour
     public void PlayAgain()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        DonneesGenerales.Vies = 3;
     }
 
     public void LoadNiveauSuivant()
     {
+        //For Debug in sample Scene.++++
+        if (SceneManager.GetActiveScene().name == "SampleScene")
+        {
+            DonneesGenerales.Vies = vies;
+            Debug.Log(DonneesGenerales.Vies);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            return;
+        }
+        //++++++++++++++++++++++++++++++
         DonneesGenerales.Vies = vies;
+        Debug.Log(DonneesGenerales.Vies);
         if (DonneesGenerales.NiveauActif < DonneesGenerales.NombreDeNiveaux)
         {
             DonneesGenerales.NiveauActif++;
@@ -113,7 +130,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Menu Principal");
+            SceneManager.LoadScene("MenuPrincipal");
+            DonneesGenerales.Vies = 3;
         }
     }
 
@@ -128,7 +146,7 @@ public class GameManager : MonoBehaviour
         NumberofBricks--;
         if (NumberofBricks <= 0)
         {
-            GameOver();
+            LoadNiveauSuivant();
         }
     }
 
