@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public bool gameover;
     public GameObject GameOverPanel;
     public int NumberofBricks;
+    public Transform[] levels;
+    public int CurrentLvl = 0;
 
 
     public int BallesEnJeu
@@ -113,7 +115,7 @@ public class GameManager : MonoBehaviour
         NumberofBricks--;
         if (NumberofBricks <= 0)
         {
-            GameOver(); //A remplacer par les levels
+            GameOver();
         }
     }
 
