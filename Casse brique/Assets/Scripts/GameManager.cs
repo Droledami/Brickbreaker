@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int vies = 3;
+    public int vies = DonneesGenerales.Vies;
     public int score = 0;
     public TextMeshProUGUI ViesText;
     public TextMeshProUGUI ScoreText;
@@ -22,8 +22,6 @@ public class GameManager : MonoBehaviour
     public bool gameover;
     public GameObject GameOverPanel;
     public int NumberofBricks;
-    public Transform[] levels;
-    public int CurrentLvl = 0;
 
 
     public int BallesEnJeu
@@ -47,7 +45,7 @@ public class GameManager : MonoBehaviour
     {
         vies--;
         ViesText.text = $"Vies: {vies}";
-        if (vies <=0)
+        if (vies <= 0)
         {
             vies = 0;
             GameOver();
@@ -58,6 +56,7 @@ public class GameManager : MonoBehaviour
     {
         vies++;
         ViesText.text = $"Vies: {vies}";
+        
     }
 
     public void AjouterScore(int points, int multiplicateurLifeTime, float multiplicateurCombo)
@@ -73,7 +72,7 @@ public class GameManager : MonoBehaviour
         if (combo > meilleurCombo)
         {
             meilleurCombo = combo;
-            if(meilleurCombo < 10)//Afin d'éviter un overflow au passage de la dizaine, si on passe à 10, l'espace devant les : sera omis.
+            if (meilleurCombo < 10)//Afin d'éviter un overflow au passage de la dizaine, si on passe à 10, l'espace devant les : sera omis.
             {
                 ComboText.text = $"meilleur\ncombo: {combo}";
             }
@@ -101,7 +100,21 @@ public class GameManager : MonoBehaviour
 
     public void PlayAgain()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void LoadNiveauSuivant()
+    {
+        DonneesGenerales.Vies = vies;
+        if (DonneesGenerales.NiveauActif < DonneesGenerales.NombreDeNiveaux)
+        {
+            DonneesGenerales.NiveauActif++;
+            SceneManager.LoadScene($"Niveau {DonneesGenerales.NiveauActif}");
+        }
+        else
+        {
+            SceneManager.LoadScene("Menu Principal");
+        }
     }
 
     public void Exit()
