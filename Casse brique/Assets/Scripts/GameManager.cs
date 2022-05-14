@@ -39,11 +39,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void EndGame()
-    {
-        Debug.Log("Le jeu est fini");
-    }
-
     public void EnleverVie()
     {
         vies--;
@@ -88,8 +83,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        HiScoreNiveauActif = DonneesGenerales.ScoreNiveau[DonneesGenerales.NiveauActif - 1];
+        HiScoreNiveauActif = DonneesGenerales.MeilleurScoreNiveau[DonneesGenerales.NiveauActif - 1];
         HiComboNiveauActif = DonneesGenerales.MeilleurComboNiveau[DonneesGenerales.NiveauActif - 1];
+        Debug.Log(HiScoreNiveauActif);
+        Debug.Log(HiComboNiveauActif);
         vies = DonneesGenerales.Vies;
         ViesText.text = $"Vies: {vies}";
         ScoreText.text = $"{score}";
@@ -112,16 +109,8 @@ public class GameManager : MonoBehaviour
 
     public void LoadNiveauSuivant()
     {
-        //For Debug in sample Scene.++++
-        if (SceneManager.GetActiveScene().name == "SampleScene")
-        {
-            DonneesGenerales.Vies = vies;
-            Debug.Log(DonneesGenerales.Vies);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            return;
-        }
-        //++++++++++++++++++++++++++++++
         DonneesGenerales.Vies = vies;
+        MettreAJourHiScoreEtHiCombo();
         Debug.Log(DonneesGenerales.Vies);
         if (DonneesGenerales.NiveauActif < DonneesGenerales.NombreDeNiveaux)
         {
@@ -132,6 +121,19 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("MenuPrincipal");
             DonneesGenerales.Vies = 3;
+            DonneesGenerales.NiveauActif = 1;
+        }
+    }
+
+    private void MettreAJourHiScoreEtHiCombo()
+    {
+        if (DonneesGenerales.MeilleurScoreNiveau[DonneesGenerales.NiveauActif - 1] < score)
+        {
+            DonneesGenerales.MeilleurScoreNiveau[DonneesGenerales.NiveauActif - 1] = score;
+        }
+        if (DonneesGenerales.MeilleurComboNiveau[DonneesGenerales.NiveauActif - 1] < meilleurCombo)
+        {
+            DonneesGenerales.MeilleurComboNiveau[DonneesGenerales.NiveauActif - 1] = meilleurCombo;
         }
     }
 

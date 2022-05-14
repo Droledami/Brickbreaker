@@ -101,7 +101,6 @@ public class BalleScript : MonoBehaviour
             {
                 derniereBalle = false;
             }
-            Debug.Log("Balle perdue!");
             GameManager.BallesEnJeu--;
             if (!derniereBalle)
             {
@@ -158,7 +157,6 @@ public class BalleScript : MonoBehaviour
     {
         if (collision.collider.tag == "Brick")
         {
-            Debug.Log("On a touché une brique");
             son.Play();
             UpdateCombo();
         }
@@ -169,7 +167,6 @@ public class BalleScript : MonoBehaviour
         }
         else if (isMoving && collision.collider.name == "Barre")
         {
-            Debug.Log("La balle a touché la barre");
             ResetCombo();
         }
     }
