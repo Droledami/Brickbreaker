@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BalleScript : MonoBehaviour
 {
@@ -12,9 +13,10 @@ public class BalleScript : MonoBehaviour
     float second = 0f;
     Transform BarrePosition;
     int multiplicateurLifeTime;
+    TrailRenderer Trail;
+
     public float multiplicateurCombo = 1f;
     public int combo=0;
-
     public int speed;
     public bool derniereBalle;
     public bool IsMoving
@@ -33,6 +35,7 @@ public class BalleScript : MonoBehaviour
         isMoving = false;
         rigidbody2D = GetComponent<Rigidbody2D>();
         GameManager = FindObjectOfType<GameManager>();
+        Trail = gameObject.GetComponentInChildren<TrailRenderer>();
         BarrePosition = GameObject.Find("Barre").GetComponent<Transform>();
         if (GameManager.BallesEnJeu == 0)
         {
@@ -60,6 +63,7 @@ public class BalleScript : MonoBehaviour
             if (!isMoving)//La balle suit la barre si elle n'est pas encore lancée.
             {
                 rigidbody2D.transform.position = BarrePosition.position + offsetFromBarre;
+                Trail.emitting = false;
             }
             else
             {
@@ -86,6 +90,8 @@ public class BalleScript : MonoBehaviour
     {
         if (rigidbody2D.position.y < -5.1f)//La balle passe sous la coordonnée 5.1 en Y, alors la balle est hors jeu. On reset les bonus et enleve une vie;
         {
+            Trail.emitting = false;
+            Trail.Clear();
             if (GameManager.BallesEnJeu > 1)
             {
                 derniereBalle = false;
@@ -121,6 +127,7 @@ public class BalleScript : MonoBehaviour
         {
             rigidbody2D.AddForce(Vector2.up * speed);
             isMoving = true;
+            Trail.emitting = true;
             GameManager.BallesEnJeu++;
         }
     }

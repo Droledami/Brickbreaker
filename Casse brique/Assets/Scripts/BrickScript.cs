@@ -37,6 +37,7 @@ public class BrickScript : MonoBehaviour
                     GameManager.AjouterScore(this.Brick.points, balle.MultiplicateurLifeTime, balle.multiplicateurCombo);
                     Transform nouvelEffetDestruction = Instantiate(effetDestruction, gameObject.transform.position,Quaternion.identity);
                     Destroy(nouvelEffetDestruction.gameObject, 3f);
+                    GameManager.AfficherPointsPopUp(gameObject.transform.position, Brick.points);
                     if (containsCollectable)
                     {
                         Instantiate(collectable, gameObject.transform.position, Quaternion.identity);

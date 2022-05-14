@@ -9,6 +9,8 @@ TagManager:
   - Collectable
   - Barre
   - Balle
+  - UICanvas
+  - PointsPopUp
   layers:
   - Default
   - TransparentFX
