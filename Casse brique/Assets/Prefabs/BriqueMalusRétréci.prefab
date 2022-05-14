@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5028991140004209359}
   m_Layer: 0
   m_Name: "BriqueMalusR\xE9tr\xE9ci"
-  m_TagString: Untagged
+  m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,3 +128,4 @@ MonoBehaviour:
   typeDeBrick: 3
   Hit: {fileID: 0}
   Hit2: {fileID: 0}
+  effetDestruction: {fileID: 5078123105134815517, guid: f8229b890908e57418c62471cba2fa98, type: 3}

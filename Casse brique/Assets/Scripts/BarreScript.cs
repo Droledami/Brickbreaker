@@ -29,21 +29,20 @@ public class BarreScript : MonoBehaviour
     
     void Update()
     {
-        if (GameManager.gameover)
+        if (!GameManager.gameover)
         {
-            return;
-        }
-        float horizontal = Input.GetAxis("Horizontal");
+            float horizontal = Input.GetAxis("Horizontal");
 
-        transform.Translate(Vector2.right * horizontal * Time.deltaTime * speed);
+            transform.Translate(Vector2.right * horizontal * Time.deltaTime * speed);
 
-        if (transform.position.x < MurGauche)
-        {
-            transform.position = new Vector2(MurGauche, transform.position.y);
-        }
-        if (transform.position.x > MurDroit)
-        {
-            transform.position = new Vector2(MurDroit, transform.position.y);
+            if (transform.position.x < MurGauche)
+            {
+                transform.position = new Vector2(MurGauche, transform.position.y);
+            }
+            if (transform.position.x > MurDroit)
+            {
+                transform.position = new Vector2(MurDroit, transform.position.y);
+            }
         }
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5167526935688100798}
   m_Layer: 0
   m_Name: BriqueViolet3pv
-  m_TagString: Untagged
+  m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
   typeDeBrick: 2
   Hit: {fileID: 21300000, guid: 20fe1ba236b602548a48c00965861db8, type: 3}
   Hit2: {fileID: 21300000, guid: 63df77db301f30145b3e70e196de1db2, type: 3}
+  effetDestruction: {fileID: 8119352920075816308, guid: 3c70359c38f6bcf449142465e67eab06, type: 3}
 --- !u!61 &5167526935688100798
 BoxCollider2D:
   m_ObjectHideFlags: 0

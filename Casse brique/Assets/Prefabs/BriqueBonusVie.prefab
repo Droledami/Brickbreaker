@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 568570895782058364}
   m_Layer: 0
   m_Name: BriqueBonusVie
-  m_TagString: Untagged
+  m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
   typeDeBrick: 3
   Hit: {fileID: 0}
   Hit2: {fileID: 0}
+  effetDestruction: {fileID: 3238153864790033453, guid: f95c8143081e70c4b9bda4202a891d92, type: 3}
 --- !u!61 &568570895782058364
 BoxCollider2D:
   m_ObjectHideFlags: 0
