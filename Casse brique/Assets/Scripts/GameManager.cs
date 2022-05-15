@@ -141,6 +141,7 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Vous avez quitté le jeu. :(");
+        SceneManager.LoadScene("MenuPrincipal");
     }
 
     public void UpdtNumberofBrick()

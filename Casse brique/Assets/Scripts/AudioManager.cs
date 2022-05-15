@@ -5,7 +5,12 @@ using System;
 public class AudioManager : MonoBehaviour
 {
     public Son[] sons;
-    // Start is called before the first frame update
+    private static AudioManager instance = null;
+    public static AudioManager Instance
+    {
+        get { return instance; }
+    }
+
     void Awake()
     {
         foreach (Son s in sons)
@@ -14,7 +19,17 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.Clip;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
         }
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+        DontDestroyOnLoad(this.gameObject);
     }
     void Start()
     {

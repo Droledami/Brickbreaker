@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
 {
     public Canvas MainMenu;
     public Canvas HiScoresMenu;
+    public Canvas NiveauMenu;
 
     public TextMeshProUGUI[] HiScoresNiveaux = new TextMeshProUGUI[DonneesGenerales.NombreDeNiveaux];
     public TextMeshProUGUI[] HiComboNiveaux = new TextMeshProUGUI[DonneesGenerales.NombreDeNiveaux];
@@ -22,6 +23,7 @@ public class MenuManager : MonoBehaviour
         {
             HiComboNiveaux[i].text = $"Hi Combo Niveau {i + 1} : {DonneesGenerales.MeilleurComboNiveau[i]}";
         }
+        NiveauMenu.gameObject.SetActive(false);
         MainMenu.gameObject.SetActive(false);
         HiScoresMenu.gameObject.SetActive(true);
     }
@@ -38,11 +40,31 @@ public class MenuManager : MonoBehaviour
 
     public void AfficherMainMenu()
     {
+        NiveauMenu.gameObject.SetActive(false);
         HiScoresMenu.gameObject.SetActive(false);
         MainMenu.gameObject.SetActive(true);
     }
     public void LancerNiveau()
     {
         SceneManager.LoadScene("Niveau 1");
+    }
+
+    public void AfficherNiveaux()
+    {
+        NiveauMenu.gameObject.SetActive(true);
+        HiScoresMenu.gameObject.SetActive(false);
+        MainMenu.gameObject.SetActive(false);
+    }
+    public void Niveau1()
+    {
+        SceneManager.LoadScene("Niveau 1");
+    }
+    public void Niveau2()
+    {
+        SceneManager.LoadScene("Niveau 2");
+    }
+    public void Niveau3()
+    {
+        SceneManager.LoadScene("Niveau 3");
     }
 }
