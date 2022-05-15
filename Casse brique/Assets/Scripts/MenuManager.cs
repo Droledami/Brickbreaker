@@ -38,6 +38,7 @@ public class MenuManager : MonoBehaviour
         {
             DonneesGenerales.MeilleurScoreNiveau[i] = 0;
             DonneesGenerales.MeilleurComboNiveau[i] = 0;
+            SaveSystem.SaveData();
         }
         AfficherHiScoresMenu();
     }

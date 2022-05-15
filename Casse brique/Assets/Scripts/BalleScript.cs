@@ -9,6 +9,7 @@ public class BalleScript : MonoBehaviour
     Rigidbody2D rigidbody2D;
     GameManager GameManager;
     Vector3 offsetFromBarre = new Vector3(0, 0.2f);
+    Vector2 vitesseDeLancement;
     bool isMoving;
     int lifeTime;
     float second = 0f;
@@ -32,6 +33,11 @@ public class BalleScript : MonoBehaviour
     {
         get { return multiplicateurLifeTime; }
     }
+
+    private void Awake()
+    {
+        vitesseDeLancement = Vector2.up * speed/50;
+    }
     void Start()
     {
         isMoving = false;
@@ -45,7 +51,7 @@ public class BalleScript : MonoBehaviour
         }
         if (!derniereBalle)//S'il y a déjà une balle en jeu, elle se lance automatiquement depuis la barre.
         {
-            rigidbody2D.AddForce(Vector2.up * speed);
+            rigidbody2D.AddForce(Vector2.up * speed * Time.deltaTime);
             isMoving = true;
             derniereBalle = false;
             GameManager.BallesEnJeu++;
@@ -74,6 +80,32 @@ public class BalleScript : MonoBehaviour
             GererBalleHorsJeu();
             LancerBalle();
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Brick")
+        {
+            FindObjectOfType<AudioManager>().Play("bruit brique");
+            UpdateCombo();
+        }
+
+        if (isMoving && collision.collider.tag == "Bord")
+        {
+            FindObjectOfType<AudioManager>().Play("bruit bord");
+        }
+        else if (isMoving && collision.collider.name == "Barre")
+        {
+            FindObjectOfType<AudioManager>().Play("bruit barre");
+            ResetCombo();
+        }
+
+        if (isMoving)
+        {
+            rigidbody2D.velocity = rigidbody2D.velocity.normalized * speed * Time.deltaTime;
+            Debug.Log($"ball velocity after bounce : {rigidbody2D.velocity.magnitude}");
+        }
+
     }
 
     private void VerifierSiDerniereBalle()
@@ -126,10 +158,12 @@ public class BalleScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) && !isMoving)//La balle est lancée dès qu'on appuie sur la touche haut.
         {
-            rigidbody2D.AddForce(Vector2.up * speed);
+            rigidbody2D.velocity = vitesseDeLancement;
             isMoving = true;
             Trail.emitting = true;
             GameManager.BallesEnJeu++;
+
+            Debug.Log($"ball velocity Before bounce : {rigidbody2D.velocity.magnitude} Vector2 : {rigidbody2D.velocity}");
         }
     }
 
@@ -147,25 +181,6 @@ public class BalleScript : MonoBehaviour
         {
             lifeTime = 1;
             UpdateMultiplicateurLifeTime(lifeTime);
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.tag == "Brick")
-        {
-            FindObjectOfType<AudioManager>().Play("bruit brique");
-            UpdateCombo();
-        }
-
-        if (isMoving && collision.collider.tag == "Bord")
-        {
-            FindObjectOfType<AudioManager>().Play("bruit bord");
-        }
-        else if (isMoving && collision.collider.name == "Barre")
-        {
-            FindObjectOfType<AudioManager>().Play("bruit barre");
-            ResetCombo();
         }
     }
 

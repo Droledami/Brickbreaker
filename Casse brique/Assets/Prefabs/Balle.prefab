@@ -280,9 +280,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multiplicateurCombo: 1
   combo: 0
-  speed: 40
+  speed: 325
   derniereBalle: 0
-  son: {fileID: 0}
 --- !u!82 &328579174
 AudioSource:
   m_ObjectHideFlags: 0
