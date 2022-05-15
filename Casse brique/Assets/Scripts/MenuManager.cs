@@ -58,13 +58,16 @@ public class MenuManager : MonoBehaviour
     public void Niveau1()
     {
         SceneManager.LoadScene("Niveau 1");
+        DonneesGenerales.NiveauActif = 1;
     }
     public void Niveau2()
     {
         SceneManager.LoadScene("Niveau 2");
+        DonneesGenerales.NiveauActif = 2;
     }
     public void Niveau3()
     {
         SceneManager.LoadScene("Niveau 3");
+        DonneesGenerales.NiveauActif = 3;
     }
 }

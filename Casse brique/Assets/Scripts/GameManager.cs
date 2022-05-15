@@ -140,6 +140,7 @@ public class GameManager : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+        DonneesGenerales.Vies = 3;
         Debug.Log("Vous avez quitté le jeu. :(");
         SceneManager.LoadScene("MenuPrincipal");
     }
