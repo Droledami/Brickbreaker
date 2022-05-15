@@ -2451,7 +2451,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &763878776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4922,6 +4922,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Balle
       objectReference: {fileID: 0}
+    - target: {fileID: 4766830344189418946, guid: 2876efb625089644fa57690733cc86e4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4766830344189418947, guid: 2876efb625089644fa57690733cc86e4, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -5530,7 +5534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1988939308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5810,6 +5814,10 @@ PrefabInstance:
     - target: {fileID: 7523324427947379706, guid: 6b765ab02195df8439d3af8acdd196b2, type: 3}
       propertyPath: m_Name
       value: Barre
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523324427947379706, guid: 6b765ab02195df8439d3af8acdd196b2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7523324427947379707, guid: 6b765ab02195df8439d3af8acdd196b2, type: 3}
