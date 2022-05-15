@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     public bool gameover;
     public GameObject GameOverPanel;
+    public GameObject LevelCompletePanel;
     public int NumberofBricks;
 
     public int HiScoreNiveauActif;
@@ -46,7 +47,7 @@ public class GameManager : MonoBehaviour
         if (vies <= 0)
         {
             vies = 0;
-            GameOver();
+            AfficherGameOver();
         }
     }
 
@@ -95,10 +96,28 @@ public class GameManager : MonoBehaviour
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
-    public void GameOver()
+    public void AfficherGameOver()
     {
         gameover = true;
         GameOverPanel.SetActive(true);
+    }
+
+    public void AfficherLevelComplete()
+    {
+        gameover = true;
+        if(DonneesGenerales.NiveauActif == DonneesGenerales.NombreDeNiveaux)
+        {
+            TextMeshProUGUI[] NextLevelText = LevelCompletePanel.GetComponentsInChildren<TextMeshProUGUI>();
+            Debug.Log(NextLevelText.Length);
+            foreach (TextMeshProUGUI nextLevelText in NextLevelText)
+            {
+                if (nextLevelText.text == "NIVEAU SUIVANT")
+                {
+                    nextLevelText.text = "RETOUR AU MENU";
+                }
+            }
+        }
+        LevelCompletePanel.SetActive(true);
     }
 
     public void PlayAgain()
@@ -110,7 +129,6 @@ public class GameManager : MonoBehaviour
     public void LoadNiveauSuivant()
     {
         DonneesGenerales.Vies = vies;
-        MettreAJourHiScoreEtHiCombo();
         Debug.Log(DonneesGenerales.Vies);
         if (DonneesGenerales.NiveauActif < DonneesGenerales.NombreDeNiveaux)
         {
@@ -150,7 +168,8 @@ public class GameManager : MonoBehaviour
         NumberofBricks--;
         if (NumberofBricks <= 0)
         {
-            LoadNiveauSuivant();
+            MettreAJourHiScoreEtHiCombo();
+            AfficherLevelComplete();
         }
     }
 
