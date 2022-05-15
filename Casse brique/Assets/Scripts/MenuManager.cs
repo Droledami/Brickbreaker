@@ -26,6 +26,16 @@ public class MenuManager : MonoBehaviour
         HiScoresMenu.gameObject.SetActive(true);
     }
 
+    public void ResetScores()
+    {
+        for (int i = 0; i < DonneesGenerales.NombreDeNiveaux; i++)
+        {
+            DonneesGenerales.MeilleurScoreNiveau[i] = 0;
+            DonneesGenerales.MeilleurComboNiveau[i] = 0;
+        }
+        AfficherHiScoresMenu();
+    }
+
     public void AfficherMainMenu()
     {
         HiScoresMenu.gameObject.SetActive(false);
