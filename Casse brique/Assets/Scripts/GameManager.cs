@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI ComboText;
     public TextMeshProUGUI pointsPopUp;
+    public TextMeshProUGUI MeilleurScoreText;
 
     private Camera cam;
 
@@ -118,6 +119,16 @@ public class GameManager : MonoBehaviour
             }
         }
         LevelCompletePanel.SetActive(true);
+        int MeilleurScore = PlayerPrefs.GetInt("MEILLEURSCORE");
+        if (score > MeilleurScore)
+        {
+            PlayerPrefs.SetInt("MEILLEURSCORE", score);
+            MeilleurScoreText.text = "Nouveau record ! :" + score;
+        }
+        else
+        {
+            MeilleurScoreText.text = "Score ! :" + score;
+        }
     }
 
     public void PlayAgain()
