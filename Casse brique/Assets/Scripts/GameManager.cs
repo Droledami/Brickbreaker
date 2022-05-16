@@ -153,6 +153,7 @@ public class GameManager : MonoBehaviour
         {
             DonneesGenerales.MeilleurComboNiveau[DonneesGenerales.NiveauActif - 1] = meilleurCombo;
         }
+        SaveSystem.SaveData();
     }
 
     public void Exit()

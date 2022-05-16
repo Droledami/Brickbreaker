@@ -13,6 +13,10 @@ public class MenuManager : MonoBehaviour
     public TextMeshProUGUI[] HiScoresNiveaux = new TextMeshProUGUI[DonneesGenerales.NombreDeNiveaux];
     public TextMeshProUGUI[] HiComboNiveaux = new TextMeshProUGUI[DonneesGenerales.NombreDeNiveaux];
 
+    private void Start()
+    {
+        SaveSystem.LoadData();
+    }
     public void AfficherHiScoresMenu()
     {
         for (int i = 0; i < HiScoresNiveaux.Length; i++)
@@ -34,6 +38,7 @@ public class MenuManager : MonoBehaviour
         {
             DonneesGenerales.MeilleurScoreNiveau[i] = 0;
             DonneesGenerales.MeilleurComboNiveau[i] = 0;
+            SaveSystem.SaveData();
         }
         AfficherHiScoresMenu();
     }
