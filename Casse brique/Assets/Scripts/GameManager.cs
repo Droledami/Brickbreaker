@@ -13,7 +13,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI ComboText;
     public TextMeshProUGUI pointsPopUp;
-    public TextMeshProUGUI MeilleurScoreText;
+    public TextMeshProUGUI MeilleurScoreText;//S'affiche à la fin du niveau dans un pop up si le plus haut record est battu.
+    public TextMeshProUGUI NiveauText;
+    public TextMeshProUGUI HiScoreText;//Les points du plus haut record détenu sur ce niveau
 
     private Camera cam;
 
@@ -87,11 +89,11 @@ public class GameManager : MonoBehaviour
     {
         HiScoreNiveauActif = DonneesGenerales.MeilleurScoreNiveau[DonneesGenerales.NiveauActif - 1];
         HiComboNiveauActif = DonneesGenerales.MeilleurComboNiveau[DonneesGenerales.NiveauActif - 1];
-        Debug.Log(HiScoreNiveauActif);
-        Debug.Log(HiComboNiveauActif);
         vies = DonneesGenerales.Vies;
         ViesText.text = $"Vies: {vies}";
         ScoreText.text = $"{score}";
+        NiveauText.text = $"Niveau {DonneesGenerales.NiveauActif}";
+        HiScoreText.text = $"Hi-Score\n{HiScoreNiveauActif}";
         NumberofBricks = GameObject.FindGameObjectsWithTag("Brick").Length;
         gameover = false;
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -127,7 +129,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            MeilleurScoreText.text = "Score ! :" + score;
+            MeilleurScoreText.text = "Score :" + score;
         }
     }
 
@@ -171,7 +173,7 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
         DonneesGenerales.Vies = 3;
-        Debug.Log("Vous avez quitté le jeu. :(");
+        DonneesGenerales.NiveauActif = 1;
         SceneManager.LoadScene("MenuPrincipal");
     }
 
@@ -185,11 +187,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AfficherPointsPopUp(Vector2 positionObjet, int points)
+    public void AfficherPointsPopUp(Vector2 positionObjet, int points)//Conversion de coordonnées en jeu vers coordonnées camera, puis y affiche ensuite des points gagnés.
     {
         pointsPopUp.text = points.ToString();
         Vector2 positionEcran = cam.WorldToScreenPoint(positionObjet);
-        //Debug.Log($"position ecran : {positionEcran} et position objet : {positionObjet}");
         Transform nouveauPointsPopUp = Instantiate(pointsPopUp, positionEcran, Quaternion.identity).transform;
         nouveauPointsPopUp.transform.SetParent(GameObject.FindGameObjectWithTag("UICanvas").transform);
     }
