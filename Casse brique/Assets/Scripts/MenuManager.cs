@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -9,13 +10,24 @@ public class MenuManager : MonoBehaviour
     public Canvas MainMenu;
     public Canvas HiScoresMenu;
     public Canvas NiveauMenu;
+    public Canvas NotUnlockedPopUp;
+
+    public Sprite ImageAvailableLevelButton;
+    public Sprite ImageLockedLevelButton;
 
     public TextMeshProUGUI HiScoresNiveaux;
     public TextMeshProUGUI HiComboNiveaux;
 
     private void Start()
     {
+        DonneesGenerales.Vies = 3;
+        DonneesGenerales.NiveauActif = 1;
         SaveSystem.LoadData();
+        for (int i = 0; i < 3; i++)//Débloque les 3 premiers niveaux
+        {
+            DonneesGenerales.LevelUnlocked[i] = true;
+        }
+        Debug.Log($"Niveau 4 débloqué ? {DonneesGenerales.LevelUnlocked[3]}");
     }
     public void AfficherHiScoresMenu()
     {
@@ -40,6 +52,7 @@ public class MenuManager : MonoBehaviour
         {
             DonneesGenerales.MeilleurScoreNiveau[i] = 0;
             DonneesGenerales.MeilleurComboNiveau[i] = 0;
+            DonneesGenerales.LevelUnlocked[i] = false;
             SaveSystem.SaveData();
         }
         AfficherHiScoresMenu();
@@ -51,30 +64,46 @@ public class MenuManager : MonoBehaviour
         HiScoresMenu.gameObject.SetActive(false);
         MainMenu.gameObject.SetActive(true);
     }
-    public void LancerNiveau()
-    {
-        SceneManager.LoadScene("Niveau 1");
-    }
 
     public void AfficherNiveaux()
     {
         NiveauMenu.gameObject.SetActive(true);
         HiScoresMenu.gameObject.SetActive(false);
         MainMenu.gameObject.SetActive(false);
+
+        GameObject[] boutonsInactifs = GameObject.FindGameObjectsWithTag("BoutonInactifs");
+        int indexNiveauBloque = 3;
+        foreach (GameObject bouton in boutonsInactifs)
+        {
+            TextMeshProUGUI boutonText = bouton.GetComponentInChildren<TextMeshProUGUI>();
+            if(DonneesGenerales.LevelUnlocked[indexNiveauBloque] == true)
+            {
+                bouton.GetComponent<Image>().sprite = ImageAvailableLevelButton;
+            }
+            else
+            {
+                boutonText.gameObject.SetActive(false);
+                bouton.GetComponent<Image>().sprite = ImageLockedLevelButton;
+            }
+            indexNiveauBloque++;
+        }
     }
-    public void Niveau1()
+
+    public void LoadNiveau(int numeroNiveau)
     {
-        SceneManager.LoadScene("Niveau 1");
-        DonneesGenerales.NiveauActif = 1;
+        if(DonneesGenerales.LevelUnlocked[numeroNiveau-1] == true)
+        {
+            DonneesGenerales.NiveauActif = numeroNiveau;
+            SceneManager.LoadScene($"Niveau {numeroNiveau}");
+        }
+        else
+        {
+            NotUnlockedPopUp.gameObject.SetActive(true);
+        }
     }
-    public void Niveau2()
+
+    public void DismissNotUnlockedPopUp()
     {
-        SceneManager.LoadScene("Niveau 2");
-        DonneesGenerales.NiveauActif = 2;
-    }
-    public void Niveau3()
-    {
-        SceneManager.LoadScene("Niveau 3");
-        DonneesGenerales.NiveauActif = 3;
+        NotUnlockedPopUp.gameObject.SetActive(false);
     }
 }

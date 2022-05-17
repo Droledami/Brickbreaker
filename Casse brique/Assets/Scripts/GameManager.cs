@@ -108,7 +108,13 @@ public class GameManager : MonoBehaviour
     public void AfficherLevelComplete()
     {
         gameover = true;
-        if(DonneesGenerales.NiveauActif == DonneesGenerales.NombreDeNiveaux)
+        if (DonneesGenerales.LevelUnlocked[DonneesGenerales.NiveauActif] == false)
+        {
+            DonneesGenerales.LevelUnlocked[DonneesGenerales.NiveauActif] = true;//L'affichage du "niveau terminé" se fait avant l'incrémentation du niveau actif. On peut donc utiliser la valeur de NiveauActif pour débloquer le niveau suivant.
+            Debug.Log($"Niveau {DonneesGenerales.NiveauActif + 1} débloqué!");
+            SaveSystem.SaveData();
+        }
+        if (DonneesGenerales.NiveauActif == DonneesGenerales.NombreDeNiveaux)
         {
             TextMeshProUGUI[] NextLevelText = LevelCompletePanel.GetComponentsInChildren<TextMeshProUGUI>();
             Debug.Log(NextLevelText.Length);
@@ -142,7 +148,6 @@ public class GameManager : MonoBehaviour
     public void LoadNiveauSuivant()
     {
         DonneesGenerales.Vies = vies;
-        Debug.Log(DonneesGenerales.Vies);
         if (DonneesGenerales.NiveauActif < DonneesGenerales.NombreDeNiveaux)
         {
             DonneesGenerales.NiveauActif++;
@@ -172,8 +177,6 @@ public class GameManager : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
-        DonneesGenerales.Vies = 3;
-        DonneesGenerales.NiveauActif = 1;
         SceneManager.LoadScene("MenuPrincipal");
     }
 

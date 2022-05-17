@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -23,17 +24,18 @@ public static class SaveSystem
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
-            DonneesJoueur data = formatter.Deserialize(stream) as DonneesJoueur;
+            DonneesJoueur playerData = formatter.Deserialize(stream) as DonneesJoueur;
 
             for (int i = 0; i < DonneesGenerales.NombreDeNiveaux; i++)
             {
-                DonneesGenerales.MeilleurScoreNiveau[i] = data.MeilleurScoreNiveau[i];
-                DonneesGenerales.MeilleurComboNiveau[i] = data.MeilleurComboNiveau[i];
+                DonneesGenerales.MeilleurScoreNiveau[i] = playerData.MeilleurScoreNiveau[i];
+                DonneesGenerales.MeilleurComboNiveau[i] = playerData.MeilleurComboNiveau[i];
+                DonneesGenerales.LevelUnlocked[i] = playerData.LevelUnlocked[i];
             }
 
             stream.Close();
 
-            return data;
+            return playerData;
 
         }
         else
