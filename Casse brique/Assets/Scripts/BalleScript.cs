@@ -103,7 +103,6 @@ public class BalleScript : MonoBehaviour
         if (isMoving)
         {
             rigidbody2D.velocity = rigidbody2D.velocity.normalized * speed * Time.deltaTime;
-            Debug.Log($"ball velocity after bounce : {rigidbody2D.velocity.magnitude}");
         }
 
     }
@@ -162,8 +161,6 @@ public class BalleScript : MonoBehaviour
             isMoving = true;
             Trail.emitting = true;
             GameManager.BallesEnJeu++;
-
-            Debug.Log($"ball velocity Before bounce : {rigidbody2D.velocity.magnitude} Vector2 : {rigidbody2D.velocity}");
         }
     }
 

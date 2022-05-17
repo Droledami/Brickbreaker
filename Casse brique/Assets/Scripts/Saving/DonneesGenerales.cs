@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class DonneesGenerales
 {
-    public static int NombreDeNiveaux { get; private set; } = 3;
+    public static int NombreDeNiveaux { get; private set; } = 10;
 
     //Données utilisables à travers le jeu.
     public static int[] MeilleurScoreNiveau { get; set; } = new int[NombreDeNiveaux];

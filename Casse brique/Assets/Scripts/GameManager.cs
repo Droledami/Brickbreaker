@@ -121,10 +121,10 @@ public class GameManager : MonoBehaviour
             }
         }
         LevelCompletePanel.SetActive(true);
-        int MeilleurScore = PlayerPrefs.GetInt("MEILLEURSCORE");
+        int MeilleurScore = DonneesGenerales.MeilleurScoreNiveau[DonneesGenerales.NiveauActif];
         if (score > MeilleurScore)
         {
-            PlayerPrefs.SetInt("MEILLEURSCORE", score);
+            DonneesGenerales.MeilleurScoreNiveau[DonneesGenerales.NiveauActif] = score;
             MeilleurScoreText.text = "Nouveau record ! :" + score;
         }
         else
