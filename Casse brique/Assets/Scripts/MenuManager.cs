@@ -52,9 +52,10 @@ public class MenuManager : MonoBehaviour
         {
             DonneesGenerales.MeilleurScoreNiveau[i] = 0;
             DonneesGenerales.MeilleurComboNiveau[i] = 0;
+            if(i > 2)//Fera en sorte de ne pas bloquer les 3 niveaux bloqués par défaut en évitant de les mettre à false.
             DonneesGenerales.LevelUnlocked[i] = false;
-            SaveSystem.SaveData();
         }
+        SaveSystem.SaveData();
         AfficherHiScoresMenu();
     }
 
@@ -76,7 +77,7 @@ public class MenuManager : MonoBehaviour
         foreach (GameObject bouton in boutonsInactifs)
         {
             TextMeshProUGUI boutonText = bouton.GetComponentInChildren<TextMeshProUGUI>();
-            if(DonneesGenerales.LevelUnlocked[indexNiveauBloque] == true)
+            if (DonneesGenerales.LevelUnlocked[indexNiveauBloque] == true)
             {
                 bouton.GetComponent<Image>().sprite = ImageAvailableLevelButton;
             }
@@ -91,7 +92,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadNiveau(int numeroNiveau)
     {
-        if(DonneesGenerales.LevelUnlocked[numeroNiveau-1] == true)
+        if (DonneesGenerales.LevelUnlocked[numeroNiveau - 1] == true)
         {
             DonneesGenerales.NiveauActif = numeroNiveau;
             SceneManager.LoadScene($"Niveau {numeroNiveau}");
@@ -105,5 +106,10 @@ public class MenuManager : MonoBehaviour
     public void DismissNotUnlockedPopUp()
     {
         NotUnlockedPopUp.gameObject.SetActive(false);
+    }
+
+    public void FermerLeProgramme()
+    {
+        Application.Quit();
     }
 }

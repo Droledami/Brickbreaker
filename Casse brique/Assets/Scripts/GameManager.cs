@@ -87,6 +87,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        HiScoreText.text = "";
         HiScoreNiveauActif = DonneesGenerales.MeilleurScoreNiveau[DonneesGenerales.NiveauActif - 1];
         HiComboNiveauActif = DonneesGenerales.MeilleurComboNiveau[DonneesGenerales.NiveauActif - 1];
         vies = DonneesGenerales.Vies;
@@ -94,6 +95,7 @@ public class GameManager : MonoBehaviour
         ScoreText.text = $"{score}";
         NiveauText.text = $"Niveau {DonneesGenerales.NiveauActif}";
         HiScoreText.text = $"Hi-Score\n{HiScoreNiveauActif}";
+        Debug.Log($"Hi-Score {HiScoreNiveauActif}");
         NumberofBricks = GameObject.FindGameObjectsWithTag("Brick").Length;
         gameover = false;
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -108,13 +110,15 @@ public class GameManager : MonoBehaviour
     public void AfficherLevelComplete()
     {
         gameover = true;
-        if (DonneesGenerales.LevelUnlocked[DonneesGenerales.NiveauActif] == false)
+        LevelCompletePanel.SetActive(true);
+        MettreAJourHiScoreEtHiCombo();
+        if (DonneesGenerales.NiveauActif < DonneesGenerales.NombreDeNiveaux && DonneesGenerales.LevelUnlocked[DonneesGenerales.NiveauActif] == false)//Déblocage du niveau suivant.
         {
             DonneesGenerales.LevelUnlocked[DonneesGenerales.NiveauActif] = true;//L'affichage du "niveau terminé" se fait avant l'incrémentation du niveau actif. On peut donc utiliser la valeur de NiveauActif pour débloquer le niveau suivant.
             Debug.Log($"Niveau {DonneesGenerales.NiveauActif + 1} débloqué!");
             SaveSystem.SaveData();
         }
-        if (DonneesGenerales.NiveauActif == DonneesGenerales.NombreDeNiveaux)
+        if (DonneesGenerales.NiveauActif == DonneesGenerales.NombreDeNiveaux)//Remplace "Niveau suivant" par "Retour au menu" si on est arrivé au dernier niveau.
         {
             TextMeshProUGUI[] NextLevelText = LevelCompletePanel.GetComponentsInChildren<TextMeshProUGUI>();
             Debug.Log(NextLevelText.Length);
@@ -125,17 +129,6 @@ public class GameManager : MonoBehaviour
                     nextLevelText.text = "RETOUR AU MENU";
                 }
             }
-        }
-        LevelCompletePanel.SetActive(true);
-        int MeilleurScore = DonneesGenerales.MeilleurScoreNiveau[DonneesGenerales.NiveauActif];
-        if (score > MeilleurScore)
-        {
-            DonneesGenerales.MeilleurScoreNiveau[DonneesGenerales.NiveauActif] = score;
-            MeilleurScoreText.text = "Nouveau record ! :" + score;
-        }
-        else
-        {
-            MeilleurScoreText.text = "Score :" + score;
         }
     }
 
@@ -163,10 +156,20 @@ public class GameManager : MonoBehaviour
 
     private void MettreAJourHiScoreEtHiCombo()
     {
-        if (DonneesGenerales.MeilleurScoreNiveau[DonneesGenerales.NiveauActif - 1] < score)
+        //if (DonneesGenerales.MeilleurScoreNiveau[DonneesGenerales.NiveauActif - 1] < score)
+        //{
+        int MeilleurScore = DonneesGenerales.MeilleurScoreNiveau[DonneesGenerales.NiveauActif - 1];
+        Debug.Log($"Meilleur score : {MeilleurScore}, score obtenu : {score}");
+        if (score > MeilleurScore)
         {
             DonneesGenerales.MeilleurScoreNiveau[DonneesGenerales.NiveauActif - 1] = score;
+            MeilleurScoreText.text = "Nouveau record ! : " + score;
         }
+        else
+        {
+            MeilleurScoreText.text = "Score : " + score;
+        }
+        //}
         if (DonneesGenerales.MeilleurComboNiveau[DonneesGenerales.NiveauActif - 1] < meilleurCombo)
         {
             DonneesGenerales.MeilleurComboNiveau[DonneesGenerales.NiveauActif - 1] = meilleurCombo;
@@ -176,7 +179,6 @@ public class GameManager : MonoBehaviour
 
     public void Exit()
     {
-        Application.Quit();
         SceneManager.LoadScene("MenuPrincipal");
     }
 
@@ -185,7 +187,6 @@ public class GameManager : MonoBehaviour
         NumberofBricks--;
         if (NumberofBricks <= 0)
         {
-            MettreAJourHiScoreEtHiCombo();
             AfficherLevelComplete();
         }
     }
