@@ -13,7 +13,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI ComboText;
     public TextMeshProUGUI pointsPopUp;
-    public TextMeshProUGUI MeilleurScoreText;
+    public TextMeshProUGUI MeilleurScoreText;//S'affiche à la fin du niveau dans un pop up si le plus haut record est battu.
+    public TextMeshProUGUI NiveauText;
+    public TextMeshProUGUI HiScoreText;//Les points du plus haut record détenu sur ce niveau
 
     private Camera cam;
 
@@ -85,13 +87,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        HiScoreText.text = "";
         HiScoreNiveauActif = DonneesGenerales.MeilleurScoreNiveau[DonneesGenerales.NiveauActif - 1];
         HiComboNiveauActif = DonneesGenerales.MeilleurComboNiveau[DonneesGenerales.NiveauActif - 1];
-        Debug.Log(HiScoreNiveauActif);
-        Debug.Log(HiComboNiveauActif);
         vies = DonneesGenerales.Vies;
         ViesText.text = $"Vies: {vies}";
         ScoreText.text = $"{score}";
+        NiveauText.text = $"Niveau {DonneesGenerales.NiveauActif}";
+        HiScoreText.text = $"Hi-Score\n{HiScoreNiveauActif}";
+        Debug.Log($"Hi-Score {HiScoreNiveauActif}");
         NumberofBricks = GameObject.FindGameObjectsWithTag("Brick").Length;
         gameover = false;
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -106,7 +110,15 @@ public class GameManager : MonoBehaviour
     public void AfficherLevelComplete()
     {
         gameover = true;
-        if(DonneesGenerales.NiveauActif == DonneesGenerales.NombreDeNiveaux)
+        LevelCompletePanel.SetActive(true);
+        MettreAJourHiScoreEtHiCombo();
+        if (DonneesGenerales.NiveauActif < DonneesGenerales.NombreDeNiveaux && DonneesGenerales.LevelUnlocked[DonneesGenerales.NiveauActif] == false)//Déblocage du niveau suivant.
+        {
+            DonneesGenerales.LevelUnlocked[DonneesGenerales.NiveauActif] = true;//L'affichage du "niveau terminé" se fait avant l'incrémentation du niveau actif. On peut donc utiliser la valeur de NiveauActif pour débloquer le niveau suivant.
+            Debug.Log($"Niveau {DonneesGenerales.NiveauActif + 1} débloqué!");
+            SaveSystem.SaveData();
+        }
+        if (DonneesGenerales.NiveauActif == DonneesGenerales.NombreDeNiveaux)//Remplace "Niveau suivant" par "Retour au menu" si on est arrivé au dernier niveau.
         {
             TextMeshProUGUI[] NextLevelText = LevelCompletePanel.GetComponentsInChildren<TextMeshProUGUI>();
             Debug.Log(NextLevelText.Length);
@@ -117,17 +129,6 @@ public class GameManager : MonoBehaviour
                     nextLevelText.text = "RETOUR AU MENU";
                 }
             }
-        }
-        LevelCompletePanel.SetActive(true);
-        int MeilleurScore = PlayerPrefs.GetInt("MEILLEURSCORE");
-        if (score > MeilleurScore)
-        {
-            PlayerPrefs.SetInt("MEILLEURSCORE", score);
-            MeilleurScoreText.text = "Nouveau record ! :" + score;
-        }
-        else
-        {
-            MeilleurScoreText.text = "Score ! :" + score;
         }
     }
 
@@ -140,7 +141,6 @@ public class GameManager : MonoBehaviour
     public void LoadNiveauSuivant()
     {
         DonneesGenerales.Vies = vies;
-        Debug.Log(DonneesGenerales.Vies);
         if (DonneesGenerales.NiveauActif < DonneesGenerales.NombreDeNiveaux)
         {
             DonneesGenerales.NiveauActif++;
@@ -156,10 +156,20 @@ public class GameManager : MonoBehaviour
 
     private void MettreAJourHiScoreEtHiCombo()
     {
-        if (DonneesGenerales.MeilleurScoreNiveau[DonneesGenerales.NiveauActif - 1] < score)
+        //if (DonneesGenerales.MeilleurScoreNiveau[DonneesGenerales.NiveauActif - 1] < score)
+        //{
+        int MeilleurScore = DonneesGenerales.MeilleurScoreNiveau[DonneesGenerales.NiveauActif - 1];
+        Debug.Log($"Meilleur score : {MeilleurScore}, score obtenu : {score}");
+        if (score > MeilleurScore)
         {
             DonneesGenerales.MeilleurScoreNiveau[DonneesGenerales.NiveauActif - 1] = score;
+            MeilleurScoreText.text = "Nouveau record ! : " + score;
         }
+        else
+        {
+            MeilleurScoreText.text = "Score : " + score;
+        }
+        //}
         if (DonneesGenerales.MeilleurComboNiveau[DonneesGenerales.NiveauActif - 1] < meilleurCombo)
         {
             DonneesGenerales.MeilleurComboNiveau[DonneesGenerales.NiveauActif - 1] = meilleurCombo;
@@ -169,9 +179,6 @@ public class GameManager : MonoBehaviour
 
     public void Exit()
     {
-        Application.Quit();
-        DonneesGenerales.Vies = 3;
-        Debug.Log("Vous avez quitté le jeu. :(");
         SceneManager.LoadScene("MenuPrincipal");
     }
 
@@ -180,16 +187,14 @@ public class GameManager : MonoBehaviour
         NumberofBricks--;
         if (NumberofBricks <= 0)
         {
-            MettreAJourHiScoreEtHiCombo();
             AfficherLevelComplete();
         }
     }
 
-    public void AfficherPointsPopUp(Vector2 positionObjet, int points)
+    public void AfficherPointsPopUp(Vector2 positionObjet, int points)//Conversion de coordonnées en jeu vers coordonnées camera, puis y affiche ensuite des points gagnés.
     {
         pointsPopUp.text = points.ToString();
         Vector2 positionEcran = cam.WorldToScreenPoint(positionObjet);
-        //Debug.Log($"position ecran : {positionEcran} et position objet : {positionObjet}");
         Transform nouveauPointsPopUp = Instantiate(pointsPopUp, positionEcran, Quaternion.identity).transform;
         nouveauPointsPopUp.transform.SetParent(GameObject.FindGameObjectWithTag("UICanvas").transform);
     }
