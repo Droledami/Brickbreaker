@@ -4378,7 +4378,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - nom: music
-    Clip: {fileID: 8300000, guid: 27ef5e6b95278524ea06d64c7be6a0e8, type: 3}
+    Clip: {fileID: 8300000, guid: 774f3f64df7904746a8a43797040269a, type: 3}
     volume: 0.053
     pitch: 1
     loop: 1
@@ -5099,7 +5099,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BY JUSTIN MICHAUX & NICOLAS CHEN
+  m_text: BY DROLEDAMI & NICKSOW_
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
